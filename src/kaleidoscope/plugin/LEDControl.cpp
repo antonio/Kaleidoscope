@@ -239,15 +239,15 @@ EventHandlerResult FocusLEDCommand::onFocusEvent(const char *command) {
   }
   case THEME: {
     if (::Focus.isEOL()) {
-      for (auto key_addr : KeyAddr::all()) {
-        cRGB c = ::LEDControl.getCrgbAt(key_addr);
+      for (auto led_index : KeyboardHardware.LEDs().all()) {
+        cRGB c = ::LEDControl.getCrgbAt(led_index.offset());
 
         ::Focus.send(c);
       }
       break;
     }
 
-    for (auto key_addr : KeyAddr::all()) {
+    for (auto led_index : KeyboardHardware.LEDs().all()) {
       if (::Focus.isEOL()) {
         break;
       }
@@ -256,7 +256,7 @@ EventHandlerResult FocusLEDCommand::onFocusEvent(const char *command) {
 
       ::Focus.read(color);
 
-      ::LEDControl.setCrgbAt(key_addr, color);
+      ::LEDControl.setCrgbAt(led_index.offset(), color);
     }
     break;
   }
