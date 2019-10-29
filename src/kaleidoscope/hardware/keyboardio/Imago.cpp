@@ -87,24 +87,22 @@ void ImagoLEDDriver::selectRegister(uint8_t page) {
   twiSend(LED_DRIVER_ADDR, CMD_SET_REGISTER, page);
 }
 
-void ImagoLEDDriver::setCrgbAt(int8_t i, cRGB crgb) {
-  if (i < 0) {
+void ImagoLEDDriver::setCrgbAt(uint8_t i, cRGB crgb) {
+  if (!HARDWARE_IMPLEMENTATION::LEDDriver::LEDs.isValid(i))
     return;
-  }
-  if (i < Props_::led_count) {
-    cRGB oldColor = getCrgbAt(i);
-    isLEDChanged |= !(oldColor.r == crgb.r && oldColor.g == crgb.g && oldColor.b == crgb.b);
 
-    led_data[i] = crgb;
-  }
+  cRGB oldColor = getCrgbAt(i);
+  isLEDChanged |= !(oldColor.r == crgb.r && oldColor.g == crgb.g && oldColor.b == crgb.b);
+
+  led_data[i] = crgb;
 }
 
-int8_t ImagoLEDDriver::getLedIndex(uint8_t key_offset) {
+uint8_t ImagoLEDDriver::getLedIndex(uint8_t key_offset) {
   return pgm_read_byte(key_led_map + key_offset);
 }
 
-cRGB ImagoLEDDriver::getCrgbAt(int8_t i) {
-  if (i < 0 || i > Props_::led_count)
+cRGB ImagoLEDDriver::getCrgbAt(uint8_t i) {
+  if (!HARDWARE_IMPLEMENTATION::LEDDriver::LEDs.isValid(i))
     return {0, 0, 0};
 
   return led_data[i];

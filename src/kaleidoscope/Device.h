@@ -91,7 +91,7 @@ class Device {
 
   static constexpr uint8_t matrix_rows = KeyScannerProps::matrix_rows;
   static constexpr uint8_t matrix_columns = KeyScannerProps::matrix_columns;
-  static constexpr typename LEDDriverProps::LEDCountType led_count = LEDDriverProps::led_count;
+  static constexpr uint8_t led_count = LEDDriverProps::led_count;
 
   /**
    * @returns the number of keys on the keyboard.

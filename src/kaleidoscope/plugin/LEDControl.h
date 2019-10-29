@@ -28,8 +28,6 @@
   "automatically registered. You can safely remove any calls to \n"            \
   "LEDControl::mode_add from your code."
 
-#define LEDCOUNTTYPE typename HARDWARE_IMPLEMENTATION::LEDDriverProps::LEDCountType
-
 namespace kaleidoscope {
 namespace plugin {
 
@@ -87,12 +85,12 @@ class LEDControl : public kaleidoscope::Plugin {
     return 0;
   }
 
-  static void setCrgbAt(LEDCOUNTTYPE led_index, cRGB crgb);
+  static void setCrgbAt(uint8_t led_index, cRGB crgb);
   static void setCrgbAt(KeyAddr key_addr, cRGB color);
   DEPRECATED(ROW_COL_FUNC) static void setCrgbAt(byte row, byte col, cRGB color) {
     setCrgbAt(KeyAddr(row, col), color);
   }
-  static cRGB getCrgbAt(LEDCOUNTTYPE led_index);
+  static cRGB getCrgbAt(uint8_t led_index);
   static cRGB getCrgbAt(KeyAddr key_addr);
   DEPRECATED(ROW_COL_FUNC) static cRGB getCrgbAt(byte row, byte col) {
     return getCrgbAt(KeyAddr(row, col));

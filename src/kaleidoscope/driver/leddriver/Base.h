@@ -26,8 +26,7 @@ namespace driver {
 namespace leddriver {
 
 struct BaseProps {
-  typedef int8_t LEDCountType;
-  static constexpr LEDCountType led_count = 0;
+  static constexpr uint8_t led_count = 0;
 };
 
 template <typename _LEDDriverProps>
@@ -37,16 +36,80 @@ class Base {
 
   void setup() {}
   void syncLeds(void) {}
-  void setCrgbAt(typename _LEDDriverProps::LEDCountType i, cRGB color) {}
-  cRGB getCrgbAt(typename _LEDDriverProps::LEDCountType i) {
+  void setCrgbAt(uint8_t i, cRGB color) {}
+  cRGB getCrgbAt(uint8_t i) {
     cRGB c = {
       0, 0, 0
     };
     return c;
   }
-  typename _LEDDriverProps::LEDCountType getLedIndex(uint8_t key_offset) {
-    return -1;
+  uint8_t getLedIndex(uint8_t key_offset) {
+    return 0;
   }
+
+  static class LEDs {
+   private:
+    uint8_t offset_;
+   public:
+    LEDs() : offset_(0) {}
+    LEDs(uint8_t offset) : offset_(offset) {}
+
+    typedef LEDs ThisType;
+
+    constexpr uint8_t offset() {
+      return offset_;
+    }
+
+    ThisType operator++() {
+      ++offset_;
+      return *this;
+    }
+
+    ThisType operator++(int) { // postfix ++
+      ThisType copy(*this);
+      ++*this;         // call the prefix increment
+      return copy;
+    }
+
+    ThisType operator--() {
+      --offset_;
+      return *this;
+    }
+
+    ThisType operator--(int) { // postfix ++
+      ThisType copy(*this);
+      --*this;         // call the prefix increment
+      return copy;
+    }
+
+    bool operator==(const ThisType &other) const {
+      return offset_ == other.offset_;
+    }
+
+    bool operator!=(const ThisType &other) const {
+      return offset_ != other.offset_;
+    }
+
+    struct Range {
+      typedef ThisType Iterator;
+      static constexpr ThisType begin() {
+        return ThisType(uint8_t(0));
+      }
+      static constexpr ThisType end() {
+        return ThisType(_LEDDriverProps::led_count);
+      }
+    };
+
+    static constexpr Range all() {
+      return Range{};
+    }
+    constexpr const ThisType &operator*() const {
+      return *this;
+    }
+    constexpr bool isValid(uint8_t index) {
+      return (_LEDDriverProps::led_count > 0 && index < _LEDDriverProps::led_count);
+    }
+  } LEDs;
 
  protected:
   typedef _LEDDriverProps Props_;

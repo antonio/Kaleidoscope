@@ -37,16 +37,16 @@ namespace hardware {
 namespace keyboardio {
 
 struct Model01LEDDriverProps : public kaleidoscope::driver::leddriver::BaseProps {
-  static constexpr LEDCountType led_count = 64;
+  static constexpr uint8_t led_count = 64;
 };
 
 class Model01LEDDriver : public kaleidoscope::driver::leddriver::Base<Model01LEDDriverProps> {
  public:
   static void syncLeds();
-  static void setCrgbAt(int8_t i, cRGB crgb);
-  static cRGB getCrgbAt(int8_t i);
+  static void setCrgbAt(uint8_t i, cRGB crgb);
+  static cRGB getCrgbAt(uint8_t i);
 
-  static int8_t getLedIndex(uint8_t key_offset);
+  static uint8_t getLedIndex(uint8_t key_offset);
 
   static void enableHighPowerLeds();
   static boolean ledPowerFault();

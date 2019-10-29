@@ -62,10 +62,7 @@ static constexpr int8_t key_led_map[Model01::led_count] PROGMEM = {
   0, 7, 8, 15, 16, 23, 31, 30,     33, 32, 40, 47, 48, 55, 56, 63,
 };
 
-void Model01LEDDriver::setCrgbAt(int8_t i, cRGB crgb) {
-  if (i < 0) {
-    return;
-  }
+void Model01LEDDriver::setCrgbAt(uint8_t i, cRGB crgb) {
   if (i < 32) {
     cRGB oldColor = getCrgbAt(i);
     isLEDChanged |= !(oldColor.r == crgb.r && oldColor.g == crgb.g && oldColor.b == crgb.b);
@@ -83,12 +80,12 @@ void Model01LEDDriver::setCrgbAt(int8_t i, cRGB crgb) {
   }
 }
 
-int8_t Model01LEDDriver::getLedIndex(uint8_t key_offset) {
+uint8_t Model01LEDDriver::getLedIndex(uint8_t key_offset) {
   return pgm_read_byte(&(key_led_map[key_offset]));
 }
 
-cRGB Model01LEDDriver::getCrgbAt(int8_t i) {
-  if (i < 0 || i >= 64)
+cRGB Model01LEDDriver::getCrgbAt(uint8_t i) {
+  if (i >= 64)
     return {0, 0, 0};
 
   if (i < 32) {

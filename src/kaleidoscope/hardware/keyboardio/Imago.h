@@ -40,16 +40,16 @@ namespace hardware {
 namespace keyboardio {
 
 struct ImagoLEDDriverProps: public kaleidoscope::driver::leddriver::BaseProps {
-  static constexpr LEDCountType led_count = 78;
+  static constexpr uint8_t led_count = 78;
 };
 
 class ImagoLEDDriver : public kaleidoscope::driver::leddriver::Base<ImagoLEDDriverProps> {
  public:
   static void setup();
   static void syncLeds();
-  static void setCrgbAt(int8_t i, cRGB crgb);
-  static cRGB getCrgbAt(int8_t i);
-  static int8_t getLedIndex(uint8_t key_offset);
+  static void setCrgbAt(uint8_t i, cRGB crgb);
+  static cRGB getCrgbAt(uint8_t i);
+  static uint8_t getLedIndex(uint8_t key_offset);
 
   static cRGB led_data[117]; // 117 is the number of LEDs the chip drives
   // until we clean stuff up a bit, it's easiest to just have the whole struct around
