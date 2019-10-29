@@ -96,7 +96,7 @@ void LEDControl::set_all_leds_to(uint8_t r, uint8_t g, uint8_t b) {
 }
 
 void LEDControl::set_all_leds_to(cRGB color) {
-  for (auto led_index : HARDWARE_IMPLEMENTATION::LEDDriver::LEDs.all()) {
+  for (auto led_index : KeyboardHardware.LEDs().all()) {
     setCrgbAt(led_index.offset(), color);
   }
 }

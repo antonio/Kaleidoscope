@@ -88,7 +88,7 @@ void ImagoLEDDriver::selectRegister(uint8_t page) {
 }
 
 void ImagoLEDDriver::setCrgbAt(uint8_t i, cRGB crgb) {
-  if (!HARDWARE_IMPLEMENTATION::LEDDriver::LEDs.isValid(i))
+  if (!KeyboardHardware.LEDs().isValid(i))
     return;
 
   cRGB oldColor = getCrgbAt(i);
@@ -102,7 +102,7 @@ uint8_t ImagoLEDDriver::getLedIndex(uint8_t key_offset) {
 }
 
 cRGB ImagoLEDDriver::getCrgbAt(uint8_t i) {
-  if (!HARDWARE_IMPLEMENTATION::LEDDriver::LEDs.isValid(i))
+  if (!KeyboardHardware.LEDs().isValid(i))
     return {0, 0, 0};
 
   return led_data[i];
