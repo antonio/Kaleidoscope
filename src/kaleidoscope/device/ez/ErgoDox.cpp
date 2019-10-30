@@ -229,6 +229,6 @@ uint8_t ErgoDox::pressedKeyswitchCount() {
 }
 }
 
-HARDWARE_IMPLEMENTATION KeyboardHardware;
+EXPORT_DEVICE();
 
 #endif

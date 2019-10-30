@@ -18,6 +18,4 @@
 
 #include KALEIDOSCOPE_HARDWARE_H
 
-extern HARDWARE_IMPLEMENTATION KeyboardHardware;
-
-typedef HARDWARE_IMPLEMENTATION::KeyAddr KeyAddr;
+typedef DEVICE_CLASS_NAME::KeyAddr KeyAddr;

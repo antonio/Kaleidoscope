@@ -306,7 +306,7 @@ void Model01::enableHardwareTestMode() {
 }
 }
 
-HARDWARE_IMPLEMENTATION KeyboardHardware;
+EXPORT_DEVICE();
 
 #endif
 #endif

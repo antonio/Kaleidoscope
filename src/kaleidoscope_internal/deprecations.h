@@ -26,3 +26,11 @@
   "------------------------------------------------------------------------\n" \
 
 /* Messages */
+
+#define _DEPRECATED_MESSAGE_KEYBOARDHARDWARE \
+  "`KeyboardHardware` is deprecated, please use `kaleidoscope::Device`\n" __NL__ \
+  "instead."
+
+#define _DEPRECATED_MESSAGE_HARDWARE_RESETDEVICE                        \
+  "`KeyboardHardware.resetDevice()` is deprecated, please use " __NL__  \
+  "`kaleidoscope::Device.rebootBootloader()` instead."

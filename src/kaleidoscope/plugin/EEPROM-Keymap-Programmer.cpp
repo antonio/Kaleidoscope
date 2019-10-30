@@ -39,7 +39,7 @@ void EEPROMKeymapProgrammer::nextState(void) {
   case WAIT_FOR_CODE:
   case WAIT_FOR_SOURCE_KEY:
     ::EEPROMKeymap.updateKey(update_position_, new_key_);
-    KeyboardHardware.storage().commit();
+    kaleidoscope::Device.storage().commit();
     cancel();
     break;
   }
@@ -57,10 +57,10 @@ EventHandlerResult EEPROMKeymapProgrammer::onKeyswitchEvent(Key &mapped_key, Key
 
   if (state_ == WAIT_FOR_KEY) {
     if (keyToggledOn(key_state)) {
-      update_position_ = Layer.top() * KeyboardHardware.numKeys() + key_addr.toInt();
+      update_position_ = Layer.top() * kaleidoscope::Device.numKeys() + key_addr.toInt();
     }
     if (keyToggledOff(key_state)) {
-      if ((uint16_t)(Layer.top() * KeyboardHardware.numKeys() + key_addr.toInt()) == update_position_)
+      if ((uint16_t)(Layer.top() * kaleidoscope::Device.numKeys() + key_addr.toInt()) == update_position_)
         nextState();
     }
     return EventHandlerResult::EVENT_CONSUMED;

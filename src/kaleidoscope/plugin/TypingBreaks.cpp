@@ -107,13 +107,13 @@ EventHandlerResult TypingBreaks::onSetup() {
   // If idleTime is max, assume that EEPROM is uninitialized, and store the
   // defaults.
   uint32_t idle_time;
-  KeyboardHardware.storage().get(settings_base_, idle_time);
+  kaleidoscope::Device.storage().get(settings_base_, idle_time);
   if (idle_time == 0xffffffff) {
-    KeyboardHardware.storage().put(settings_base_, settings);
-    KeyboardHardware.storage().commit();
+    kaleidoscope::Device.storage().put(settings_base_, settings);
+    kaleidoscope::Device.storage().commit();
   }
 
-  KeyboardHardware.storage().get(settings_base_, settings);
+  kaleidoscope::Device.storage().get(settings_base_, settings);
   return EventHandlerResult::OK;
 }
 
@@ -193,8 +193,8 @@ EventHandlerResult TypingBreaks::onFocusEvent(const char *command) {
     break;
   }
 
-  KeyboardHardware.storage().put(settings_base_, settings);
-  KeyboardHardware.storage().commit();
+  kaleidoscope::Device.storage().put(settings_base_, settings);
+  kaleidoscope::Device.storage().commit();
   return EventHandlerResult::EVENT_CONSUMED;
 }
 

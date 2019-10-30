@@ -21,7 +21,7 @@
 
 #include <Arduino.h>
 
-#define HARDWARE_IMPLEMENTATION kaleidoscope::device::keyboardio::Model01
+#define DEVICE_CLASS_NAME kaleidoscope::device::keyboardio::Model01
 #include "Kaleidoscope-HIDAdaptor-KeyboardioHID.h"
 #include "KeyboardioScanner.h"
 

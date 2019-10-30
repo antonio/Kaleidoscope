@@ -20,7 +20,7 @@
 #ifdef ARDUINO_AVR_KEYBOARDIO_IMAGO
 
 #include <Arduino.h>
-#define HARDWARE_IMPLEMENTATION kaleidoscope::device::keyboardio::Imago
+#define DEVICE_CLASS_NAME kaleidoscope::device::keyboardio::Imago
 
 struct cRGB {
   uint8_t b;

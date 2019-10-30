@@ -34,8 +34,8 @@ void systerAction(kaleidoscope::plugin::Syster::action_t action, const char *sym
     kaleidoscope::hid::sendKeyboardReport ();
     break;
   case kaleidoscope::plugin::Syster::SymbolAction:
-    KeyboardHardware.serialPort().print ("systerAction: symbol=");
-    KeyboardHardware.serialPort().println (symbol);
+    kaleidoscope::Device.serialPort().print ("systerAction: symbol=");
+    kaleidoscope::Device.serialPort().println (symbol);
     if (strcmp (symbol, "coffee") == 0) {
       Unicode.type (0x2615);
     }
@@ -46,7 +46,7 @@ void systerAction(kaleidoscope::plugin::Syster::action_t action, const char *sym
 KALEIDOSCOPE_INIT_PLUGINS(EEPROMSettings, HostOS, Unicode, Syster);
 
 void setup() {
-  KeyboardHardware.serialPort().begin(9600);
+  kaleidoscope::Device.serialPort().begin(9600);
   Kaleidoscope.setup ();
 }
 ```

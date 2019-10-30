@@ -20,7 +20,7 @@
 #ifdef ARDUINO_AVR_PLANCK
 
 #include <Arduino.h>
-#define HARDWARE_IMPLEMENTATION kaleidoscope::device::olkb::Planck
+#define DEVICE_CLASS_NAME kaleidoscope::device::olkb::Planck
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/HalfKay.h"

@@ -29,7 +29,7 @@
 #define KALEIDOSCOPE_BOOTLOADER_FLIP_WORKAROUND 1
 
 #include <Arduino.h>
-#define HARDWARE_IMPLEMENTATION kaleidoscope::device::softhruf::Splitography
+#define DEVICE_CLASS_NAME kaleidoscope::device::softhruf::Splitography
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/FLIP.h"

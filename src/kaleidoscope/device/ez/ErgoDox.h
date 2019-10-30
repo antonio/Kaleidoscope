@@ -31,7 +31,7 @@
 
 #include "kaleidoscope/device/ez/ErgoDox/ErgoDoxScanner.h"
 
-#define HARDWARE_IMPLEMENTATION kaleidoscope::device::ez::ErgoDox
+#define DEVICE_CLASS_NAME kaleidoscope::device::ez::ErgoDox
 #include "Kaleidoscope-HIDAdaptor-KeyboardioHID.h"
 
 struct cRGB {

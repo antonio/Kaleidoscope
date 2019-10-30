@@ -40,18 +40,18 @@
   constexpr uint8_t BOARD::matrix_col_pins[matrix_columns];
 
 #define AVR_KEYSCANNER_BOILERPLATE()                                                      \
-  AVR_KEYSCANNER_PROPS_BOILERPLATE(HARDWARE_IMPLEMENTATION::KeyScannerProps)     \
+  AVR_KEYSCANNER_PROPS_BOILERPLATE(DEVICE_CLASS_NAME::KeyScannerProps)     \
   template<>                                                                               \
-  volatile uint16_t HARDWARE_IMPLEMENTATION::KeyScanner::previousKeyState_[HARDWARE_IMPLEMENTATION::KeyScannerProps::matrix_rows] = {}; \
+  volatile uint16_t DEVICE_CLASS_NAME::KeyScanner::previousKeyState_[DEVICE_CLASS_NAME::KeyScannerProps::matrix_rows] = {}; \
   template<>                                                                               \
-  volatile uint16_t HARDWARE_IMPLEMENTATION::KeyScanner::keyState_[HARDWARE_IMPLEMENTATION::KeyScannerProps::matrix_rows] = {}; \
+  volatile uint16_t DEVICE_CLASS_NAME::KeyScanner::keyState_[DEVICE_CLASS_NAME::KeyScannerProps::matrix_rows] = {}; \
   template<>                                                                               \
-  uint16_t HARDWARE_IMPLEMENTATION::KeyScanner::masks_[HARDWARE_IMPLEMENTATION::KeyScannerProps::matrix_rows] = {};            \
+  uint16_t DEVICE_CLASS_NAME::KeyScanner::masks_[DEVICE_CLASS_NAME::KeyScannerProps::matrix_rows] = {};            \
   template<>                                                                               \
-  uint8_t HARDWARE_IMPLEMENTATION::KeyScanner::debounce_matrix_[HARDWARE_IMPLEMENTATION::KeyScannerProps::matrix_rows][HARDWARE_IMPLEMENTATION::KeyScannerProps::matrix_columns] = {}; \
+  uint8_t DEVICE_CLASS_NAME::KeyScanner::debounce_matrix_[DEVICE_CLASS_NAME::KeyScannerProps::matrix_rows][DEVICE_CLASS_NAME::KeyScannerProps::matrix_columns] = {}; \
                                                                                            \
   ISR(TIMER1_OVF_vect) {                                                                   \
-    KeyboardHardware.readMatrix();                                                         \
+    kaleidoscope::Device.readMatrix();                                                         \
   }
 
 namespace kaleidoscope {

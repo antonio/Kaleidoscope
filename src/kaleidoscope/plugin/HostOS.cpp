@@ -33,15 +33,15 @@ EventHandlerResult HostOS::onSetup(void) {
     return EventHandlerResult::OK;
   }
 
-  os_ = (hostos::Type)KeyboardHardware.storage().read(eeprom_slice_);
+  os_ = (hostos::Type)kaleidoscope::Device.storage().read(eeprom_slice_);
 
   return EventHandlerResult::OK;
 }
 
 void HostOS::os(hostos::Type new_os) {
   os_ = new_os;
-  KeyboardHardware.storage().update(eeprom_slice_, os_);
-  KeyboardHardware.storage().commit();
+  kaleidoscope::Device.storage().update(eeprom_slice_, os_);
+  kaleidoscope::Device.storage().commit();
 }
 
 }

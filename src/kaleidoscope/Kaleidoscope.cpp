@@ -34,11 +34,11 @@ Kaleidoscope_::setup(void) {
   //
   // TODO(anyone): Figure out a way we can get rid of this, and fix the bug
   // properly.
-  KeyboardHardware.serialPort().begin(9600);
+  kaleidoscope::Device.serialPort().begin(9600);
 
   kaleidoscope::Hooks::onSetup();
 
-  KeyboardHardware.setup();
+  kaleidoscope::Device.setup();
 
   kaleidoscope::hid::initializeKeyboard();
   kaleidoscope::hid::initializeConsumerControl();
@@ -57,7 +57,7 @@ Kaleidoscope_::loop(void) {
 
   kaleidoscope::Hooks::beforeEachCycle();
 
-  KeyboardHardware.scanMatrix();
+  kaleidoscope::Device.scanMatrix();
 
   kaleidoscope::Hooks::beforeReportingState();
 

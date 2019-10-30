@@ -21,7 +21,7 @@
 #ifdef ARDUINO_AVR_ATREUS2
 
 #include <Arduino.h>
-#define HARDWARE_IMPLEMENTATION kaleidoscope::device::technomancy::Atreus2
+#define DEVICE_CLASS_NAME kaleidoscope::device::technomancy::Atreus2
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/Caterina.h"

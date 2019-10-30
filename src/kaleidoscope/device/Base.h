@@ -35,12 +35,13 @@
 #error cRGB and CRGB *must* be defined before including this header!
 #endif
 
-#define _DEPRECATED_MESSAGE_HARDWARE_RESETDEVICE                       \
-  "`KeyboardHardware.resetDevice()` is deprecated, please use " __NL__ \
-  "`KeyboardHardware.rebootBootloader()` instead."
+#define EXPORT_DEVICE()                         \
+  namespace kaleidoscope {                      \
+  DEVICE_CLASS_NAME Device;                     \
+  }
 
 /* All hardware libraries must define the following macros:
- * HARDWARE_IMPLEMENTATION - the name of your public object conforming to
+ * DEVICE_CLASS_NAME - the name of your public object conforming to
  *   the 'class Hardware' interface below.
  * CRGB(r,g,b) - explained below
  * cRGB, a structure with at least three members: r, g, and b -
@@ -332,7 +333,7 @@ class Base {
    *
    * Because different hardware has different ways to accomplish this, the
    * hardware plugin must provide these functions. Kaleidoscope will wrap them,
-   * so user code does not have to deal with KeyboardHardware.
+   * so user code does not have to deal with kaleidoscope::Device.
    * @{
    */
   /**

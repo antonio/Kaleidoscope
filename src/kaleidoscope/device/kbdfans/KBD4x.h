@@ -23,7 +23,7 @@
 
 #include <Arduino.h>
 
-#define HARDWARE_IMPLEMENTATION kaleidoscope::device::kbdfans::KBD4x
+#define DEVICE_CLASS_NAME kaleidoscope::device::kbdfans::KBD4x
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/FLIP.h"

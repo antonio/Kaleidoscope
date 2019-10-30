@@ -31,7 +31,7 @@
 #endif
 
 /* All hardware libraries must define the following macros:
- * HARDWARE_IMPLEMENTATION - the name of your public object conforming to
+ * DEVICE_CLASS_NAME - the name of your public object conforming to
  *   the 'class Hardware' interface below.
  * CRGB(r,g,b) - explained below
  * cRGB, a structure with at least three members: r, g, and b -

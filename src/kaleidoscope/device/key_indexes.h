@@ -17,7 +17,7 @@
 
 #pragma once
 
-typedef HARDWARE_IMPLEMENTATION::KeyAddr KeyAddr;
+typedef DEVICE_CLASS_NAME::KeyAddr KeyAddr;
 
 /* To be used by the hardware implementations, `keyIndex` tells us the index of
  * a key, from which we can figure out the row and column as needed. The index
@@ -28,7 +28,7 @@ typedef HARDWARE_IMPLEMENTATION::KeyAddr KeyAddr;
  * user-facing code.
  *
  * We're using a macro instead of a constexpr so that it is evaluated lazily,
- * when `HARDWARE_IMPLEMENTATION` can be properly resolved.
+ * when `DEVICE_CLASS_NAME` can be properly resolved.
  */
 #define keyIndex(row,col)                                                      \
   (uint8_t)(KeyAddr(row, col).toInt() + 1)
