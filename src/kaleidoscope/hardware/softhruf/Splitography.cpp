@@ -31,7 +31,7 @@ namespace kaleidoscope {
 namespace hardware {
 namespace softhruf {
 
-ATMEGA_KEYSCANNER_IMPLEMENTATION();
+AVR_KEYSCANNER_BOILERPLATE();
 
 }
 }

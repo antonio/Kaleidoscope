@@ -24,7 +24,7 @@ namespace kaleidoscope {
 namespace hardware {
 namespace olkb {
 
-ATMEGA_KEYSCANNER_IMPLEMENTATION();
+AVR_KEYSCANNER_BOILERPLATE();
 
 }
 }

@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * ATMegaKeyScanner -- ATMega-based keyscanner component
+ * kaleidoscope::driver::keyscanner::AVR -- AVR-based keyscanner component
  * Copyright (C) 2018-2019  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify it under
@@ -29,18 +29,18 @@
 #define ROW_PIN_LIST(...)  __VA_ARGS__
 #define COL_PIN_LIST(...)  __VA_ARGS__
 
-#define ATMEGA_KEYSCANNER_PROPS(ROW_PINS_, COL_PINS_)               \
+#define AVR_KEYSCANNER_PROPS(ROW_PINS_, COL_PINS_)               \
   KEYSCANNER_PROPS(NUM_ARGS(ROW_PINS_), NUM_ARGS(COL_PINS_));       \
   static constexpr uint8_t matrix_row_pins[matrix_rows] =  ROW_PINS_;   \
   static constexpr uint8_t matrix_col_pins[matrix_columns] =  COL_PINS_;
 
-#define ATMEGA_KEYSCANNER_PROPS_IMPLEMENTATION(BOARD)   \
-  KEYSCANNER_PROPS_IMPLEMENTATION(BOARD);               \
+#define AVR_KEYSCANNER_PROPS_BOILERPLATE(BOARD)   \
+  KEYSCANNER_PROPS_BOILERPLATE(BOARD);               \
   constexpr uint8_t BOARD::matrix_row_pins[matrix_rows];    \
   constexpr uint8_t BOARD::matrix_col_pins[matrix_columns];
 
-#define ATMEGA_KEYSCANNER_IMPLEMENTATION()                                                      \
-  ATMEGA_KEYSCANNER_PROPS_IMPLEMENTATION(HARDWARE_IMPLEMENTATION::KeyScannerProps)     \
+#define AVR_KEYSCANNER_BOILERPLATE()                                                      \
+  AVR_KEYSCANNER_PROPS_BOILERPLATE(HARDWARE_IMPLEMENTATION::KeyScannerProps)     \
   template<>                                                                               \
   volatile uint16_t HARDWARE_IMPLEMENTATION::KeyScanner::previousKeyState_[HARDWARE_IMPLEMENTATION::KeyScannerProps::matrix_rows] = {}; \
   template<>                                                                               \
@@ -58,7 +58,7 @@ namespace kaleidoscope {
 namespace driver {
 namespace keyscanner {
 
-struct ATMegaProps: kaleidoscope::driver::keyscanner::BaseProps {
+struct AVRProps: kaleidoscope::driver::keyscanner::BaseProps {
   static const uint8_t debounce = 3;
 
   /*
@@ -70,9 +70,9 @@ struct ATMegaProps: kaleidoscope::driver::keyscanner::BaseProps {
 };
 
 template <typename _KeyScannerProps>
-class ATMega : public kaleidoscope::driver::keyscanner::Base<_KeyScannerProps> {
+class AVR : public kaleidoscope::driver::keyscanner::Base<_KeyScannerProps> {
  private:
-  typedef ATMega<_KeyScannerProps> ThisType;
+  typedef AVR<_KeyScannerProps> ThisType;
 
  public:
   void setup() {

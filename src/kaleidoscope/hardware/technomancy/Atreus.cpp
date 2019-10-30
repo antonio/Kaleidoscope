@@ -33,7 +33,7 @@ namespace kaleidoscope {
 namespace hardware {
 namespace technomancy {
 
-ATMEGA_KEYSCANNER_IMPLEMENTATION();
+AVR_KEYSCANNER_BOILERPLATE();
 
 }
 }

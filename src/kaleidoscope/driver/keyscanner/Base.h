@@ -27,7 +27,7 @@
   static constexpr uint8_t matrix_columns = COLS_;          \
   typedef MatrixAddr<matrix_rows, matrix_columns> KeyAddr;
 
-#define KEYSCANNER_PROPS_IMPLEMENTATION(BOARD)      \
+#define KEYSCANNER_PROPS_BOILERPLATE(BOARD)         \
   const uint8_t BOARD::matrix_rows;                 \
   const uint8_t BOARD::matrix_columns;
 

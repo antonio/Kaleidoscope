@@ -26,7 +26,7 @@ namespace kaleidoscope {
 namespace hardware {
 namespace kbdfans {
 
-ATMEGA_KEYSCANNER_IMPLEMENTATION();
+AVR_KEYSCANNER_BOILERPLATE();
 
 }
 }

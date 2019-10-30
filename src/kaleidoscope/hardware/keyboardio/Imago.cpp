@@ -49,7 +49,7 @@ static constexpr uint8_t LED_REGISTER_DATA1_SIZE = 0xAB;
 
 static constexpr uint8_t LED_REGISTER_DATA_LARGEST = LED_REGISTER_DATA0_SIZE;
 
-ATMEGA_KEYSCANNER_IMPLEMENTATION();
+AVR_KEYSCANNER_BOILERPLATE();
 
 bool ImagoLEDDriver::isLEDChanged = true;
 cRGB ImagoLEDDriver::led_data[];

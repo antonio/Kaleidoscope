@@ -22,7 +22,7 @@
 #include <Arduino.h>
 #define HARDWARE_IMPLEMENTATION kaleidoscope::hardware::olkb::Planck
 
-#include "kaleidoscope/driver/keyscanner/ATMega.h"
+#include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/HalfKay.h"
 #include "kaleidoscope/hardware/avr/AVRDevice.h"
 
@@ -31,13 +31,13 @@ namespace hardware {
 namespace olkb {
 
 struct PlanckDeviceProps : kaleidoscope::hardware::avr::AVRDeviceProps {
-  typedef struct PlanckKeyScannerProps : public kaleidoscope::driver::keyscanner::ATMegaProps {
-    ATMEGA_KEYSCANNER_PROPS(
+  typedef struct PlanckKeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
+    AVR_KEYSCANNER_PROPS(
       ROW_PIN_LIST({ PIN_D0, PIN_D5, PIN_B5, PIN_B6 }),
       COL_PIN_LIST({ PIN_F1, PIN_F0, PIN_B0, PIN_C7, PIN_F4, PIN_F5, PIN_F6, PIN_F7, PIN_D4, PIN_D6, PIN_B4, PIN_D7 })
     );
   } KeyScannerProps;
-  typedef kaleidoscope::driver::keyscanner::ATMega<KeyScannerProps> KeyScanner;
+  typedef kaleidoscope::driver::keyscanner::AVR<KeyScannerProps> KeyScanner;
   typedef kaleidoscope::driver::bootloader::avr::HalfKay BootLoader;
 };
 
