@@ -34,13 +34,10 @@
   static constexpr uint8_t matrix_row_pins[matrix_rows] =  ROW_PINS_;   \
   static constexpr uint8_t matrix_col_pins[matrix_columns] =  COL_PINS_;
 
-#define AVR_KEYSCANNER_PROPS_BOILERPLATE(BOARD)   \
-  KEYSCANNER_PROPS_BOILERPLATE(BOARD);               \
-  constexpr uint8_t BOARD::matrix_row_pins[matrix_rows];    \
-  constexpr uint8_t BOARD::matrix_col_pins[matrix_columns];
-
 #define AVR_KEYSCANNER_BOILERPLATE()                                                      \
-  AVR_KEYSCANNER_PROPS_BOILERPLATE(DEVICE_CLASS_NAME::KeyScannerProps)     \
+  KEYSCANNER_PROPS_BOILERPLATE(DEVICE_CLASS_NAME::KeyScannerProps);                                  \
+  constexpr uint8_t DEVICE_CLASS_NAME::KeyScannerProps::matrix_row_pins[matrix_rows];                \
+  constexpr uint8_t DEVICE_CLASS_NAME::KeyScannerProps::matrix_col_pins[matrix_columns]; \
   template<>                                                                               \
   volatile uint16_t DEVICE_CLASS_NAME::KeyScanner::previousKeyState_[DEVICE_CLASS_NAME::KeyScannerProps::matrix_rows] = {}; \
   template<>                                                                               \
