@@ -15,8 +15,8 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file kaleidoscope/Hardware.h
- * Base class for Kaleidoscope hardware libraries.
+/** @file kaleidoscope/device/Base.h
+ * Base class for Kaleidoscope device libraries.
  */
 
 #pragma once
