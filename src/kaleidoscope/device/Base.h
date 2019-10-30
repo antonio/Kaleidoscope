@@ -36,9 +36,7 @@
 #endif
 
 #define EXPORT_DEVICE()                         \
-  namespace kaleidoscope {                      \
   DEVICE_CLASS_NAME Device;                     \
-  }
 
 /* All hardware libraries must define the following macros:
  * DEVICE_CLASS_NAME - the name of your public object conforming to
@@ -333,7 +331,7 @@ class Base {
    *
    * Because different hardware has different ways to accomplish this, the
    * hardware plugin must provide these functions. Kaleidoscope will wrap them,
-   * so user code does not have to deal with kaleidoscope::Device.
+   * so user code does not have to deal with Device.
    * @{
    */
   /**

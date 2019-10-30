@@ -44,7 +44,7 @@ void EEPROMKeymap::setup(uint8_t max) {
 
 void EEPROMKeymap::max_layers(uint8_t max) {
   max_layers_ = max;
-  keymap_base_ = ::EEPROMSettings.requestSlice(max_layers_ * kaleidoscope::Device.numKeys() * 2);
+  keymap_base_ = ::EEPROMSettings.requestSlice(max_layers_ * Device.numKeys() * 2);
 }
 
 Key EEPROMKeymap::getKey(uint8_t layer, KeyAddr key_addr) {
@@ -53,10 +53,10 @@ Key EEPROMKeymap::getKey(uint8_t layer, KeyAddr key_addr) {
   if (layer >= max_layers_)
     return Key_NoKey;
 
-  uint16_t pos = ((layer * kaleidoscope::Device.numKeys()) + key_addr.toInt()) * 2;
+  uint16_t pos = ((layer * Device.numKeys()) + key_addr.toInt()) * 2;
 
-  key.flags = kaleidoscope::Device.storage().read(keymap_base_ + pos);
-  key.keyCode = kaleidoscope::Device.storage().read(keymap_base_ + pos + 1);
+  key.flags = Device.storage().read(keymap_base_ + pos);
+  key.keyCode = Device.storage().read(keymap_base_ + pos + 1);
 
   return key;
 }
@@ -77,8 +77,8 @@ uint16_t EEPROMKeymap::keymap_base(void) {
 }
 
 void EEPROMKeymap::updateKey(uint16_t base_pos, Key key) {
-  kaleidoscope::Device.storage().update(keymap_base_ + base_pos * 2, key.flags);
-  kaleidoscope::Device.storage().update(keymap_base_ + base_pos * 2 + 1, key.keyCode);
+  Device.storage().update(keymap_base_ + base_pos * 2, key.flags);
+  Device.storage().update(keymap_base_ + base_pos * 2 + 1, key.keyCode);
 }
 
 void EEPROMKeymap::dumpKeymap(uint8_t layers, Key(*getkey)(uint8_t, KeyAddr)) {
@@ -150,14 +150,14 @@ EventHandlerResult EEPROMKeymap::onFocusEvent(const char *command) {
   } else {
     uint16_t i = 0;
 
-    while (!::Focus.isEOL() && (i < (uint16_t)kaleidoscope::Device.numKeys() * max_layers_)) {
+    while (!::Focus.isEOL() && (i < (uint16_t)Device.numKeys() * max_layers_)) {
       Key k;
 
       ::Focus.read(k);
       updateKey(i, k);
       i++;
     }
-    kaleidoscope::Device.storage().commit();
+    Device.storage().commit();
   }
 
   return EventHandlerResult::EVENT_CONSUMED;

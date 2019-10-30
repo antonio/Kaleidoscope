@@ -43,7 +43,7 @@ void setup () {
     return;
   }
 
-  kaleidoscope::Device.storage().get(settingsBase, testSettings);
+  Device.storage().get(settingsBase, testSettings);
 }
 ```
 

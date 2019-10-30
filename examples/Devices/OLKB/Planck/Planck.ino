@@ -167,7 +167,7 @@ KALEIDOSCOPE_INIT_PLUGINS(Macros);
 
 void setup() {
   Kaleidoscope.setup();
-  kaleidoscope::Device.serialPort().begin(9600);
+  Device.serialPort().begin(9600);
 }
 
 void loop() {

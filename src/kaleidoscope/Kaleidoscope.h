@@ -39,11 +39,8 @@ void setup();
 #include KALEIDOSCOPE_HARDWARE_H
 #include "kaleidoscope_internal/deprecations.h"
 
-namespace kaleidoscope {
 extern DEVICE_CLASS_NAME Device;
-}
-
-static constexpr DEPRECATED(KEYBOARDHARDWARE) DEVICE_CLASS_NAME &KeyboardHardware = kaleidoscope::Device;
+static constexpr DEPRECATED(KEYBOARDHARDWARE) DEVICE_CLASS_NAME &KeyboardHardware = Device;
 
 #ifdef PER_KEY_DATA_STACKED
 #define KEYMAP_STACKED(...) { PER_KEY_DATA_STACKED(XXX, __VA_ARGS__) }
@@ -53,9 +50,9 @@ static constexpr DEPRECATED(KEYBOARDHARDWARE) DEVICE_CLASS_NAME &KeyboardHardwar
 #define KEYMAP(...) { PER_KEY_DATA(XXX, __VA_ARGS__) }
 #endif
 
-#define ROWS (kaleidoscope::Device.matrix_rows)
-#define COLS (kaleidoscope::Device.matrix_columns)
-#define LED_COUNT (kaleidoscope::Device.led_count)
+#define ROWS (Device.matrix_rows)
+#define COLS (Device.matrix_columns)
+#define LED_COUNT (Device.led_count)
 
 #include "kaleidoscope/KeyAddr.h"
 #include "kaleidoscope/key_events.h"
@@ -112,13 +109,13 @@ class Kaleidoscope_ {
   void setup(void);
   void loop(void);
 
-  static constexpr bool has_leds = (kaleidoscope::Device.led_count > 0);
+  static constexpr bool has_leds = (Device.led_count > 0);
 
   /** Detaching from / attaching to the host.
    *
    * These two functions wrap the hardware plugin's similarly named functions.
    * We wrap them, because we'd like plugins and user-code not having to use
-   * `kaleidoscope::Device` directly.
+   * `Device` directly.
    *
    * The methods themselves implement detaching from / attaching to the host,
    * without rebooting the device, and remaining powered in between.
@@ -127,10 +124,10 @@ class Kaleidoscope_ {
    * detach and attach.
    */
   void detachFromHost() {
-    kaleidoscope::Device.detachFromHost();
+    Device.detachFromHost();
   }
   void attachToHost() {
-    kaleidoscope::Device.attachToHost();
+    Device.attachToHost();
   }
 
   /** Returns the timer as it was at the start of the cycle.

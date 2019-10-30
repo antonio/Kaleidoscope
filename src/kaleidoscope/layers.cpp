@@ -38,8 +38,8 @@ extern const Key keymaps_linear[][ROWS * COLS] = {};
 namespace kaleidoscope {
 uint32_t Layer_::layer_state_;
 uint8_t Layer_::top_active_layer_;
-Key Layer_::live_composite_keymap_[kaleidoscope::Device.numKeys()];
-uint8_t Layer_::active_layers_[kaleidoscope::Device.numKeys()];
+Key Layer_::live_composite_keymap_[Device.numKeys()];
+uint8_t Layer_::active_layers_[Device.numKeys()];
 Key(*Layer_::getKey)(uint8_t layer, KeyAddr key_addr) = Layer.getKeyFromPROGMEM;
 
 void Layer_::handleKeymapKeyswitchEvent(Key keymapEntry, uint8_t keyState) {
@@ -111,7 +111,7 @@ void Layer_::updateLiveCompositeKeymap(KeyAddr key_addr) {
 }
 
 void Layer_::updateActiveLayers(void) {
-  memset(active_layers_, 0, kaleidoscope::Device.numKeys());
+  memset(active_layers_, 0, Device.numKeys());
   for (auto key_addr : KeyAddr::all()) {
     int8_t layer = top_active_layer_;
 

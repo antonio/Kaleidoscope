@@ -61,7 +61,7 @@ KEYMAPS(
 KALEIDOSCOPE_INIT_PLUGINS(GeminiPR);
 
 void setup() {
-  kaleidoscope::Device.serialPort().begin(9600);
+  Device.serialPort().begin(9600);
   Kaleidoscope.setup();
 }
 

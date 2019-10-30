@@ -28,16 +28,16 @@ uint16_t LEDPaletteTheme::reserveThemes(uint8_t max_themes) {
   if (!palette_base_)
     palette_base_ = ::EEPROMSettings.requestSlice(16 * sizeof(cRGB));
 
-  return ::EEPROMSettings.requestSlice(max_themes * kaleidoscope::Device.numKeys() / 2);
+  return ::EEPROMSettings.requestSlice(max_themes * Device.numKeys() / 2);
 }
 
 void LEDPaletteTheme::updateHandler(uint16_t theme_base, uint8_t theme) {
   if (!Kaleidoscope.has_leds)
     return;
 
-  uint16_t map_base = theme_base + (theme * kaleidoscope::Device.numKeys() / 2);
+  uint16_t map_base = theme_base + (theme * Device.numKeys() / 2);
 
-  for (uint8_t pos = 0; pos < kaleidoscope::Device.numKeys(); pos++) {
+  for (uint8_t pos = 0; pos < Device.numKeys(); pos++) {
     cRGB color = lookupColorAtPosition(map_base, pos);
     ::LEDControl.setCrgbAt(pos, color);
   }
@@ -47,8 +47,8 @@ void LEDPaletteTheme::refreshAt(uint16_t theme_base, uint8_t theme, KeyAddr key_
   if (!Kaleidoscope.has_leds)
     return;
 
-  uint16_t map_base = theme_base + (theme * kaleidoscope::Device.numKeys() / 2);
-  uint8_t pos = kaleidoscope::Device.getLedIndex(key_addr);
+  uint16_t map_base = theme_base + (theme * Device.numKeys() / 2);
+  uint8_t pos = Device.getLedIndex(key_addr);
 
   cRGB color = lookupColorAtPosition(map_base, pos);
   ::LEDControl.setCrgbAt(key_addr, color);
@@ -58,7 +58,7 @@ void LEDPaletteTheme::refreshAt(uint16_t theme_base, uint8_t theme, KeyAddr key_
 const uint8_t LEDPaletteTheme::lookupColorIndexAtPosition(uint16_t map_base, uint16_t position) {
   uint8_t color_index;
 
-  color_index = kaleidoscope::Device.storage().read(map_base + position / 2);
+  color_index = Device.storage().read(map_base + position / 2);
   if (position % 2)
     color_index &= ~0xf0;
   else
@@ -76,7 +76,7 @@ const cRGB LEDPaletteTheme::lookupColorAtPosition(uint16_t map_base, uint16_t po
 const cRGB LEDPaletteTheme::lookupPaletteColor(uint8_t color_index) {
   cRGB color;
 
-  kaleidoscope::Device.storage().get(palette_base_ + color_index * sizeof(cRGB), color);
+  Device.storage().get(palette_base_ + color_index * sizeof(cRGB), color);
   color.r ^= 0xff;
   color.g ^= 0xff;
   color.b ^= 0xff;
@@ -87,7 +87,7 @@ const cRGB LEDPaletteTheme::lookupPaletteColor(uint8_t color_index) {
 void LEDPaletteTheme::updateColorIndexAtPosition(uint16_t map_base, uint16_t position, uint8_t color_index) {
   uint8_t indexes;
 
-  indexes = kaleidoscope::Device.storage().read(map_base + position / 2);
+  indexes = Device.storage().read(map_base + position / 2);
   if (position % 2) {
     uint8_t other = indexes >> 4;
     indexes = (other << 4) + color_index;
@@ -95,8 +95,8 @@ void LEDPaletteTheme::updateColorIndexAtPosition(uint16_t map_base, uint16_t pos
     uint8_t other = indexes & ~0xf0;
     indexes = (color_index << 4) + other;
   }
-  kaleidoscope::Device.storage().update(map_base + position / 2, indexes);
-  kaleidoscope::Device.storage().commit();
+  Device.storage().update(map_base + position / 2, indexes);
+  Device.storage().commit();
 }
 
 EventHandlerResult LEDPaletteTheme::onFocusEvent(const char *command) {
@@ -130,10 +130,10 @@ EventHandlerResult LEDPaletteTheme::onFocusEvent(const char *command) {
     color.g ^= 0xff;
     color.b ^= 0xff;
 
-    kaleidoscope::Device.storage().put(palette_base_ + i * sizeof(color), color);
+    Device.storage().put(palette_base_ + i * sizeof(color), color);
     i++;
   }
-  kaleidoscope::Device.storage().commit();
+  Device.storage().commit();
 
   ::LEDControl.refreshAll();
 
@@ -153,11 +153,11 @@ EventHandlerResult LEDPaletteTheme::themeFocusEvent(const char *command,
   if (strcmp_P(command, expected_command) != 0)
     return EventHandlerResult::OK;
 
-  uint16_t max_index = (max_themes * kaleidoscope::Device.numKeys()) / 2;
+  uint16_t max_index = (max_themes * Device.numKeys()) / 2;
 
   if (::Focus.isEOL()) {
     for (uint16_t pos = 0; pos < max_index; pos++) {
-      uint8_t indexes = kaleidoscope::Device.storage().read(theme_base + pos);
+      uint8_t indexes = Device.storage().read(theme_base + pos);
 
       ::Focus.send((uint8_t)(indexes >> 4), indexes & ~0xf0);
     }
@@ -173,10 +173,10 @@ EventHandlerResult LEDPaletteTheme::themeFocusEvent(const char *command,
 
     uint8_t indexes = (idx1 << 4) + idx2;
 
-    kaleidoscope::Device.storage().update(theme_base + pos, indexes);
+    Device.storage().update(theme_base + pos, indexes);
     pos++;
   }
-  kaleidoscope::Device.storage().commit();
+  Device.storage().commit();
 
   ::LEDControl.refreshAll();
 

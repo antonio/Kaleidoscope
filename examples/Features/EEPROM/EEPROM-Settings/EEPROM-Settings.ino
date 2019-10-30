@@ -42,16 +42,16 @@ KEYMAPS(
 KALEIDOSCOPE_INIT_PLUGINS(EEPROMSettings);
 
 void setup() {
-  kaleidoscope::Device.serialPort().begin(9600);
+  Device.serialPort().begin(9600);
 
   Kaleidoscope.setup();
 
-  while (!kaleidoscope::Device.serialPort()) {
+  while (!Device.serialPort()) {
   }
 
-  kaleidoscope::Device.serialPort().println(EEPROMSettings.isValid() ? F("valid EEPROM settings") : F("invalid EEPROM settings"));
-  kaleidoscope::Device.serialPort().println(EEPROMSettings.crc(), HEX);
-  kaleidoscope::Device.serialPort().println(EEPROMSettings.version());
+  Device.serialPort().println(EEPROMSettings.isValid() ? F("valid EEPROM settings") : F("invalid EEPROM settings"));
+  Device.serialPort().println(EEPROMSettings.crc(), HEX);
+  Device.serialPort().println(EEPROMSettings.version());
 }
 
 void loop() {
