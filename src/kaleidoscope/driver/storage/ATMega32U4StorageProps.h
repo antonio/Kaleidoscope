@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * kaleidoscope::driver::storage::AVREEPROM -- Storage driver with AVR EEPROM backend
+ * kaleidoscope::driver::storage::ATMega32U4StorageProps -- Storage driver props for ATMega32U4
  * Copyright (C) 2019  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify it under
@@ -24,30 +24,8 @@ namespace kaleidoscope {
 namespace driver {
 namespace storage {
 
-template <typename _StorageProps>
-class AVREEPROM : public kaleidoscope::driver::storage::Base<_StorageProps> {
- public:
-  template<typename T>
-  static T& get(uint16_t offset, T& t) {
-    return EEPROM.get(offset, t);
-  }
-
-  template<typename T>
-  static const T& put(uint16_t offset, T& t) {
-    return EEPROM.put(offset, t);
-  }
-
-  uint8_t read(int idx) {
-    return EEPROM.read(idx);
-  }
-
-  void write(int idx, uint8_t val) {
-    EEPROM.write(idx, val);
-  }
-
-  void update(int idx, uint8_t val) {
-    EEPROM.update(idx, val);
-  }
+struct ATMega32U4StorageProps : kaleidoscope::driver::storage::BaseProps {
+  static constexpr uint16_t length = 1024;
 };
 
 }
