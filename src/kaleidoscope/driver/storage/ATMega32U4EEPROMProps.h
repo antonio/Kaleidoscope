@@ -17,14 +17,13 @@
 
 #pragma once
 
-#include "kaleidoscope/driver/storage/Base.h"
-#include <EEPROM.h>
+#include "kaleidoscope/driver/storage/AVREEPROM.h"
 
 namespace kaleidoscope {
 namespace driver {
 namespace storage {
 
-struct ATMega32U4StorageProps : kaleidoscope::driver::storage::BaseProps {
+struct ATMega32U4EEPROMProps : kaleidoscope::driver::storage::AVREEPROMProps {
   static constexpr uint16_t length = 1024;
 };
 

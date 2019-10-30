@@ -23,7 +23,7 @@
 #include "kaleidoscope/device/Base.h"
 
 #include "kaleidoscope/driver/mcu/ATMega32U4.h"
-#include "kaleidoscope/driver/storage/ATMega32U4StorageProps.h"
+#include "kaleidoscope/driver/storage/ATMega32U4EEPROMProps.h"
 #include "kaleidoscope/driver/storage/AVREEPROM.h"
 
 namespace kaleidoscope {
@@ -32,7 +32,7 @@ namespace avr {
 
 struct ATMega32U4Props : kaleidoscope::device::BaseProps {
   typedef kaleidoscope::driver::mcu::ATMega32U4 MCU;
-  typedef kaleidoscope::driver::storage::ATMega32U4StorageProps StorageProps;
+  typedef kaleidoscope::driver::storage::ATMega32U4EEPROMProps StorageProps;
   typedef kaleidoscope::driver::storage::AVREEPROM<StorageProps> Storage;
 };
 

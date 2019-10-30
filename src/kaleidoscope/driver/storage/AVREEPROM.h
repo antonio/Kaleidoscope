@@ -24,6 +24,10 @@ namespace kaleidoscope {
 namespace driver {
 namespace storage {
 
+struct AVREEPROMProps : kaleidoscope::driver::storage::BaseProps {
+  static constexpr uint16_t length = 0;
+};
+
 template <typename _StorageProps>
 class AVREEPROM : public kaleidoscope::driver::storage::Base<_StorageProps> {
  public:
