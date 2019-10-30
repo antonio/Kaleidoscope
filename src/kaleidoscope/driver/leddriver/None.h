@@ -34,10 +34,10 @@ namespace driver {
 namespace leddriver {
 
 /*
- * The purpose of this class (and the accompanying Props) is to serve as a
- * default for the base `DeviceProps` class, with a name more descriptive than
- * `Base`. In practice, one shouldn't use it, and should override the it in the
- * device blueprint.
+ * The purpose of this class is to serve as a default inside the base
+ * `kaleidoscope::device::Base` class, with a name more descriptive than
+ * `leddriver::Base`. In practice, one shouldn't use it, and should override the
+ * bootloader in the device description.
  */
 class None : public kaleidoscope::driver::leddriver::Base<BaseProps> {};
 

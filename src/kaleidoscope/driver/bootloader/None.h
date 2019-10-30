@@ -25,10 +25,10 @@ namespace driver {
 namespace bootloader {
 
 /*
- * The purpose of this class is to serve as a default for the base
- * `DeviceDescription` class, with a name more descriptive than
- * `BaseBootloader`. In practice, one shouldn't use it, and should override the
- * bootloader in the device description.
+ * The purpose of this class is to serve as a default inside the base
+ * `kaleidoscope::device::Base` class, with a name more descriptive than
+ * `bootloader::Base`. In practice, one shouldn't use it, and should override
+ * the bootloader in the device description.
  */
 class None : public kaleidoscope::driver::bootloader::Base {};
 
