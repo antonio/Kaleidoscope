@@ -33,15 +33,13 @@ namespace kaleidoscope {
 namespace driver {
 namespace leddriver {
 
-struct NoProps : public kaleidoscope::driver::leddriver::BaseProps {};
-
 /*
  * The purpose of this class (and the accompanying Props) is to serve as a
  * default for the base `DeviceProps` class, with a name more descriptive than
  * `Base`. In practice, one shouldn't use it, and should override the it in the
  * device blueprint.
  */
-class None : public kaleidoscope::driver::leddriver::Base<NoProps> {};
+class None : public kaleidoscope::driver::leddriver::Base<BaseProps> {};
 
 }
 }

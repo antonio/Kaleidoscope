@@ -23,15 +23,13 @@ namespace kaleidoscope {
 namespace driver {
 namespace storage {
 
-struct NoProps : public kaleidoscope::driver::storage::BaseProps {};
-
 /*
  * The purpose of this class (and the accompanying Props) is to serve as a
  * default for the base `DeviceProps` class, with a name more descriptive than
  * `Base`. In practice, one shouldn't use it, and should override the it in the
  * device blueprint.
  */
-class None : public kaleidoscope::driver::storage::Base<NoProps> {};
+class None : public kaleidoscope::driver::storage::Base<BaseProps> {};
 
 }
 }
