@@ -20,7 +20,7 @@
 #ifdef ARDUINO_AVR_KEYBOARDIO_IMAGO
 
 #include <Arduino.h>
-#define HARDWARE_IMPLEMENTATION kaleidoscope::hardware::keyboardio::Imago
+#define HARDWARE_IMPLEMENTATION kaleidoscope::device::keyboardio::Imago
 
 struct cRGB {
   uint8_t b;
@@ -33,10 +33,10 @@ struct cRGB {
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/led/Base.h"
 #include "kaleidoscope/driver/bootloader/avr/Caterina.h"
-#include "kaleidoscope/hardware/avr/AVRDevice.h"
+#include "kaleidoscope/device/avr/ATMega32U4.h"
 
 namespace kaleidoscope {
-namespace hardware {
+namespace device {
 namespace keyboardio {
 
 struct ImagoLEDDriverProps: public kaleidoscope::driver::led::BaseProps {
@@ -62,7 +62,7 @@ class ImagoLEDDriver : public kaleidoscope::driver::led::Base<ImagoLEDDriverProp
   static void twiSend(uint8_t addr, uint8_t Reg_Add, uint8_t Reg_Dat);
 };
 
-struct ImagoDeviceProps : kaleidoscope::hardware::avr::AVRDeviceProps {
+struct ImagoProps : kaleidoscope::device::avr::ATMega32U4Props {
   typedef struct ImagoKeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
     AVR_KEYSCANNER_PROPS(
       ROW_PIN_LIST({ PIN_F6, PIN_F5, PIN_F4, PIN_F1, PIN_F0}),
@@ -75,7 +75,7 @@ struct ImagoDeviceProps : kaleidoscope::hardware::avr::AVRDeviceProps {
   typedef kaleidoscope::driver::bootloader::avr::Caterina BootLoader;
 };
 
-class Imago: public kaleidoscope::hardware::avr::AVRDevice<ImagoDeviceProps> {
+class Imago: public kaleidoscope::device::avr::ATMega32U4<ImagoProps> {
  public:
   void setup();
 };
@@ -98,6 +98,6 @@ class Imago: public kaleidoscope::hardware::avr::AVRDevice<ImagoDeviceProps> {
 }
 }
 
-#include "kaleidoscope/hardware/key_indexes.h"
+#include "kaleidoscope/device/key_indexes.h"
 
 #endif

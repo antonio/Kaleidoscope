@@ -29,10 +29,10 @@
 #include <Kaleidoscope.h>
 #include <KeyboardioHID.h>
 #include <avr/wdt.h>
-#include "kaleidoscope/hardware/ez/ErgoDox/ErgoDoxScanner.h"
+#include "kaleidoscope/device/ez/ErgoDox/ErgoDoxScanner.h"
 
 namespace kaleidoscope {
-namespace hardware {
+namespace device {
 namespace ez {
 
 ErgoDoxScanner ErgoDox::scanner_;

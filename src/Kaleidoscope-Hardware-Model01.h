@@ -17,4 +17,4 @@
 
 #pragma once
 
-#include "kaleidoscope/hardware/keyboardio/Model01.h"
+#include "kaleidoscope/device/keyboardio/Model01.h"

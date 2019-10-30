@@ -22,7 +22,7 @@
 
 #include "kaleidoscope/macro_helpers.h"
 #include "kaleidoscope/driver/keyscanner/Base.h"
-#include "kaleidoscope/hardware/avr/pins_and_ports.h"
+#include "kaleidoscope/device/avr/pins_and_ports.h"
 
 #include <avr/wdt.h>
 

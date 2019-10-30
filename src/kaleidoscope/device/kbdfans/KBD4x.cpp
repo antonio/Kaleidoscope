@@ -1,17 +1,10 @@
 /* -*- mode: c++ -*-
- * Kaleidoscope-Hardware-SOFTHRUF-Splitography -- Splitography hardware support for Kaleidoscope
- * Copyright (C) 2018, 2019  Keyboard.io, Inc
- *
- * Based on QMK (commit e9a67f8fd) and sdothum's fork (commit 8616b44)
- *  (C) Jack Humbert, Jun Wako, Steven Hum, and others
- * Original QMK sources:
- *  - keyboards/splitography/config.h
- *  - keyboards/splitography/splitography.h
+ * Kaleidoscope-Hardware-KBDFans-KBD4x -- KBD4x hardware support for Kaleidoscope
+ * Copyright (C) 2019  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * it under the terms of version 3 of the GNU General Public License as
+ * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,14 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef ARDUINO_AVR_SPLITOGRAPHY
+#ifdef ARDUINO_AVR_KBD4X
 
 #include <Kaleidoscope.h>
 #include <avr/wdt.h>
+#include <avr/boot.h>
+
 
 namespace kaleidoscope {
-namespace hardware {
-namespace softhruf {
+namespace device {
+namespace kbdfans {
 
 AVR_KEYSCANNER_BOILERPLATE();
 

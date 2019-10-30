@@ -27,17 +27,17 @@
 #ifdef ARDUINO_AVR_ATREUS
 
 #include <Arduino.h>
-#define HARDWARE_IMPLEMENTATION kaleidoscope::hardware::technomancy::Atreus
+#define HARDWARE_IMPLEMENTATION kaleidoscope::device::technomancy::Atreus
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/HalfKay.h"
-#include "kaleidoscope/hardware/avr/AVRDevice.h"
+#include "kaleidoscope/device/avr/ATMega32U4.h"
 
 namespace kaleidoscope {
-namespace hardware {
+namespace device {
 namespace technomancy {
 
-struct AtreusDeviceProps : kaleidoscope::hardware::avr::AVRDeviceProps {
+struct AtreusProps : kaleidoscope::device::avr::ATMega32U4Props {
   typedef struct AtreusKeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
 #ifdef KALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR
     AVR_KEYSCANNER_PROPS(
@@ -64,7 +64,7 @@ struct AtreusDeviceProps : kaleidoscope::hardware::avr::AVRDeviceProps {
   typedef kaleidoscope::driver::bootloader::avr::HalfKay BootLoader;
 };
 
-class Atreus: public kaleidoscope::hardware::avr::AVRDevice<AtreusDeviceProps> {};
+class Atreus: public kaleidoscope::device::avr::ATMega32U4<AtreusProps> {};
 
 #define PER_KEY_DATA(dflt,                                                  \
     R0C0, R0C1, R0C2, R0C3, R0C4,             R0C7, R0C8, R0C9, R0C10, R0C11, \
@@ -97,6 +97,6 @@ class Atreus: public kaleidoscope::hardware::avr::AVRDevice<AtreusDeviceProps> {
 }
 }
 
-#include "kaleidoscope/hardware/key_indexes.h"
+#include "kaleidoscope/device/key_indexes.h"
 
 #endif

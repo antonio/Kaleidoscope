@@ -30,7 +30,7 @@
 #include <Arduino.h>
 
 namespace kaleidoscope {
-namespace hardware {
+namespace device {
 namespace ez {
 
 class ErgoDoxScanner {

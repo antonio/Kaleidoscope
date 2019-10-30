@@ -29,9 +29,9 @@
 
 #include <Arduino.h>
 
-#include "kaleidoscope/hardware/ez/ErgoDox/ErgoDoxScanner.h"
+#include "kaleidoscope/device/ez/ErgoDox/ErgoDoxScanner.h"
 
-#define HARDWARE_IMPLEMENTATION kaleidoscope::hardware::ez::ErgoDox
+#define HARDWARE_IMPLEMENTATION kaleidoscope::device::ez::ErgoDox
 #include "Kaleidoscope-HIDAdaptor-KeyboardioHID.h"
 
 struct cRGB {
@@ -42,20 +42,20 @@ struct cRGB {
 
 #include "kaleidoscope/driver/keyscanner/Base.h"
 #include "kaleidoscope/driver/bootloader/avr/HalfKay.h"
-#include "kaleidoscope/hardware/avr/AVRDevice.h"
+#include "kaleidoscope/device/avr/ATMega32U4.h"
 
 namespace kaleidoscope {
-namespace hardware {
+namespace device {
 namespace ez {
 
-struct ErgoDoxDeviceProps : public kaleidoscope::hardware::avr::AVRDeviceProps {
+struct ErgoDoxProps : public kaleidoscope::device::avr::ATMega32U4Props {
   typedef struct ErgoDoxKeyScannerProps : kaleidoscope::driver::keyscanner::BaseProps {
     KEYSCANNER_PROPS(14, 6);
   } KeyScannerProps;
   typedef kaleidoscope::driver::bootloader::avr::HalfKay Bootloader;
 };
 
-class ErgoDox : public kaleidoscope::hardware::avr::AVRDevice<ErgoDoxDeviceProps> {
+class ErgoDox : public kaleidoscope::device::avr::ATMega32U4<ErgoDoxProps> {
  public:
   ErgoDox(void) {}
 
@@ -137,6 +137,6 @@ class ErgoDox : public kaleidoscope::hardware::avr::AVRDevice<ErgoDoxDeviceProps
 }
 }
 
-#include "kaleidoscope/hardware/key_indexes.h"
+#include "kaleidoscope/device/key_indexes.h"
 
 #endif

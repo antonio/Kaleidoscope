@@ -21,7 +21,7 @@
 
 #include <Arduino.h>
 
-#define HARDWARE_IMPLEMENTATION kaleidoscope::hardware::keyboardio::Model01
+#define HARDWARE_IMPLEMENTATION kaleidoscope::device::keyboardio::Model01
 #include "Kaleidoscope-HIDAdaptor-KeyboardioHID.h"
 #include "KeyboardioScanner.h"
 
@@ -30,10 +30,10 @@
 #include "kaleidoscope/driver/keyscanner/Base.h"
 #include "kaleidoscope/driver/led/Base.h"
 #include "kaleidoscope/driver/bootloader/avr/Caterina.h"
-#include "kaleidoscope/hardware/avr/AVRDevice.h"
+#include "kaleidoscope/device/avr/ATMega32U4.h"
 
 namespace kaleidoscope {
-namespace hardware {
+namespace device {
 namespace keyboardio {
 
 struct Model01LEDDriverProps : public kaleidoscope::driver::led::BaseProps {
@@ -94,7 +94,7 @@ class Model01KeyScanner : public kaleidoscope::driver::keyscanner::Base<Model01K
   static void enableScannerPower();
 };
 
-struct Model01DeviceProps : kaleidoscope::hardware::avr::AVRDeviceProps {
+struct Model01Props : kaleidoscope::device::avr::ATMega32U4Props {
   typedef Model01LEDDriverProps  LEDDriverProps;
   typedef Model01LEDDriver LEDDriver;
   typedef Model01KeyScannerProps KeyScannerProps;
@@ -102,7 +102,7 @@ struct Model01DeviceProps : kaleidoscope::hardware::avr::AVRDeviceProps {
   typedef kaleidoscope::driver::bootloader::avr::Caterina BootLoader;
 };
 
-class Model01 : public kaleidoscope::hardware::avr::AVRDevice<Model01DeviceProps> {
+class Model01 : public kaleidoscope::device::avr::ATMega32U4<Model01Props> {
  public:
   static void setup();
 
@@ -113,7 +113,7 @@ class Model01 : public kaleidoscope::hardware::avr::AVRDevice<Model01DeviceProps
 }
 }
 
-#include "kaleidoscope/hardware/key_indexes.h"
+#include "kaleidoscope/device/key_indexes.h"
 
 #define PER_KEY_DATA_STACKED(dflt,                                    \
                r0c0, r0c1, r0c2, r0c3, r0c4, r0c5, r0c6,                \

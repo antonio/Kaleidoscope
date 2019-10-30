@@ -29,7 +29,7 @@ extern "C" {
 #define LED_DRIVER_ADDR 0x30
 
 namespace kaleidoscope {
-namespace hardware {
+namespace device {
 namespace keyboardio {
 
 static constexpr uint8_t CMD_SET_REGISTER = 0xFD;
@@ -182,7 +182,7 @@ void Imago::setup() {
   }
   TWBR = 10;
 
-  kaleidoscope::hardware::avr::AVRDevice<ImagoDeviceProps>::setup();
+  kaleidoscope::device::avr::ATMega32U4<ImagoProps>::setup();
 }
 
 }

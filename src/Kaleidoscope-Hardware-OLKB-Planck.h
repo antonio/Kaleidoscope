@@ -18,5 +18,4 @@
 
 #pragma once
 
-#define KALEIDOSCOPE_WITH_ATMEGA_KEYBOARD 1
-#include "kaleidoscope/hardware/olkb/Planck.h"
+#include "kaleidoscope/device/olkb/Planck.h"

@@ -17,4 +17,5 @@
  */
 
 #pragma once
-#include "kaleidoscope/hardware/ez/ErgoDox.h"
+
+#include "kaleidoscope/device/ez/ErgoDox.h"

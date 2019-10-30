@@ -29,17 +29,17 @@
 #define KALEIDOSCOPE_BOOTLOADER_FLIP_WORKAROUND 1
 
 #include <Arduino.h>
-#define HARDWARE_IMPLEMENTATION kaleidoscope::hardware::softhruf::Splitography
+#define HARDWARE_IMPLEMENTATION kaleidoscope::device::softhruf::Splitography
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/FLIP.h"
-#include "kaleidoscope/hardware/avr/AVRDevice.h"
+#include "kaleidoscope/device/avr/ATMega32U4.h"
 
 namespace kaleidoscope {
-namespace hardware {
+namespace device {
 namespace softhruf {
 
-struct SplitographyDeviceProps : kaleidoscope::hardware::avr::AVRDeviceProps {
+struct SplitographyProps : kaleidoscope::device::avr::ATMega32U4Props {
   typedef struct SplitographyKeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
     AVR_KEYSCANNER_PROPS(
       ROW_PIN_LIST({ PIN_D0, PIN_D1, PIN_D2, PIN_D3 }),
@@ -50,7 +50,7 @@ struct SplitographyDeviceProps : kaleidoscope::hardware::avr::AVRDeviceProps {
   typedef kaleidoscope::driver::bootloader::avr::FLIP BootLoader;
 };
 
-class Splitography: public kaleidoscope::hardware::avr::AVRDevice<SplitographyDeviceProps> {
+class Splitography: public kaleidoscope::device::avr::ATMega32U4<SplitographyProps> {
  public:
   Splitography() {
     mcu_.disableJTAG();
@@ -89,6 +89,6 @@ class Splitography: public kaleidoscope::hardware::avr::AVRDevice<SplitographyDe
 }
 }
 
-#include "kaleidoscope/hardware/key_indexes.h"
+#include "kaleidoscope/device/key_indexes.h"
 
 #endif

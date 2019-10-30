@@ -1,14 +1,6 @@
 /* -*- mode: c++ -*-
- * Kaleidoscope-Hardware-Technomancy-Atreus -- Atreus hardware support for Kaleidoscope
- * Copyright (C) 2018  Keyboard.io, Inc
- *
- * Based on QMK (commit e9a67f8fd)
- *  (C) Jack Humbert, Phil Hagelberg, and others
- * Original QMK sources:
- *  - keyboards/atreus/atreus.h
- *  - keyboards/atreus/config.h
- *  - quantum/matrix.c
- *  - tmk_core/common/avr/bootloader.c
+ * Technomancy Atreus2 hardware support for Kaleidoscope
+ * Copyright (C) 2019  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,13 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef ARDUINO_AVR_ATREUS
+#ifdef ARDUINO_AVR_ATREUS2
 
 #include <Kaleidoscope.h>
 #include <avr/wdt.h>
 
 namespace kaleidoscope {
-namespace hardware {
+namespace device {
 namespace technomancy {
 
 AVR_KEYSCANNER_BOILERPLATE();

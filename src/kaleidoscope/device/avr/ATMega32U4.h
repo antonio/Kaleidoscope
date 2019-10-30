@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * hardware::avr::AVRDevice -- Generic AVR device base class
+ * device::avr::ATMega32U4 -- Generic ATMega32U4 device base class
  * Copyright (C) 2019  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,17 +27,17 @@
 #include "kaleidoscope/driver/storage/AVREEPROM.h"
 
 namespace kaleidoscope {
-namespace hardware {
+namespace device {
 namespace avr {
 
-struct AVRDeviceProps : kaleidoscope::device::BaseProps {
+struct ATMega32U4Props : kaleidoscope::device::BaseProps {
   typedef kaleidoscope::driver::mcu::ATMega32U4 MCU;
   typedef kaleidoscope::driver::storage::ATMega32U4StorageProps StorageProps;
   typedef kaleidoscope::driver::storage::AVREEPROM<StorageProps> Storage;
 };
 
 template <typename _DeviceProps>
-class AVRDevice : public kaleidoscope::device::Base<_DeviceProps> {
+class ATMega32U4 : public kaleidoscope::device::Base<_DeviceProps> {
  public:
   auto serialPort() -> decltype(Serial) & {
     return Serial;
