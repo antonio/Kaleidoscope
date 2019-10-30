@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * kaleidoscope::driver::leddriver::None -- Dummy LED hardware driver for Kaleidoscope
+ * kaleidoscope::driver::led::None -- Dummy LED hardware driver for Kaleidoscope
  * Copyright (C) 2019  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify it under
@@ -27,11 +27,11 @@ struct cRGB {
 
 #endif
 
-#include "kaleidoscope/driver/leddriver/Base.h"
+#include "kaleidoscope/driver/led/Base.h"
 
 namespace kaleidoscope {
 namespace driver {
-namespace leddriver {
+namespace led {
 
 /*
  * The purpose of this class is to serve as a default inside the base
@@ -39,7 +39,7 @@ namespace leddriver {
  * `leddriver::Base`. In practice, one shouldn't use it, and should override the
  * bootloader in the device description.
  */
-class None : public kaleidoscope::driver::leddriver::Base<BaseProps> {};
+class None : public kaleidoscope::driver::led::Base<BaseProps> {};
 
 }
 }

@@ -28,7 +28,7 @@
 #define CRGB(r,g,b) (cRGB){b, g, r}
 
 #include "kaleidoscope/driver/keyscanner/Base.h"
-#include "kaleidoscope/driver/leddriver/Base.h"
+#include "kaleidoscope/driver/led/Base.h"
 #include "kaleidoscope/driver/bootloader/avr/Caterina.h"
 #include "kaleidoscope/hardware/avr/AVRDevice.h"
 
@@ -36,11 +36,11 @@ namespace kaleidoscope {
 namespace hardware {
 namespace keyboardio {
 
-struct Model01LEDDriverProps : public kaleidoscope::driver::leddriver::BaseProps {
+struct Model01LEDDriverProps : public kaleidoscope::driver::led::BaseProps {
   static constexpr uint8_t led_count = 64;
 };
 
-class Model01LEDDriver : public kaleidoscope::driver::leddriver::Base<Model01LEDDriverProps> {
+class Model01LEDDriver : public kaleidoscope::driver::led::Base<Model01LEDDriverProps> {
  public:
   static void syncLeds();
   static void setCrgbAt(uint8_t i, cRGB crgb);

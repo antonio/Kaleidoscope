@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * BaseLEDDriver -- LED hardware driver base class for Kaleidoscope
+ * kaleidoscope::driver::led::Base -- LED hardware driver base class for Kaleidoscope
  * Copyright (C) 2019  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify it under
@@ -23,7 +23,7 @@
 
 namespace kaleidoscope {
 namespace driver {
-namespace leddriver {
+namespace led {
 
 struct BaseProps {
   static constexpr uint8_t led_count = 0;

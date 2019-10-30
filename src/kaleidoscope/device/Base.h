@@ -26,7 +26,7 @@
 #include "kaleidoscope/macro_helpers.h"
 
 #include "kaleidoscope/driver/keyscanner/None.h"
-#include "kaleidoscope/driver/leddriver/None.h"
+#include "kaleidoscope/driver/led/None.h"
 #include "kaleidoscope/driver/mcu/None.h"
 #include "kaleidoscope/driver/bootloader/None.h"
 #include "kaleidoscope/driver/storage/None.h"
@@ -59,8 +59,8 @@ namespace device {
 struct BaseProps {
   typedef kaleidoscope::driver::keyscanner::BaseProps KeyScannerProps;
   typedef kaleidoscope::driver::keyscanner::None KeyScanner;
-  typedef kaleidoscope::driver::leddriver::BaseProps LEDDriverProps;
-  typedef kaleidoscope::driver::leddriver::None LEDDriver;
+  typedef kaleidoscope::driver::led::BaseProps LEDDriverProps;
+  typedef kaleidoscope::driver::led::None LEDDriver;
   typedef kaleidoscope::driver::mcu::None MCU;
   typedef kaleidoscope::driver::bootloader::None Bootloader;
   typedef kaleidoscope::driver::storage::BaseProps StorageProps;
