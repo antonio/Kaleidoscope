@@ -49,9 +49,9 @@ namespace device {
 namespace ez {
 
 struct ErgoDoxProps : public kaleidoscope::device::avr::ATMega32U4Props {
-  typedef struct ErgoDoxKeyScannerProps : kaleidoscope::driver::keyscanner::BaseProps {
+  struct KeyScannerProps : kaleidoscope::driver::keyscanner::BaseProps {
     KEYSCANNER_PROPS(14, 6);
-  } KeyScannerProps;
+  };
   typedef kaleidoscope::driver::bootloader::avr::HalfKay Bootloader;
 };
 

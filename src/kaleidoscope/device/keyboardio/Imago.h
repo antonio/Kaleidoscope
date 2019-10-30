@@ -63,12 +63,12 @@ class ImagoLEDDriver : public kaleidoscope::driver::led::Base<ImagoLEDDriverProp
 };
 
 struct ImagoProps : kaleidoscope::device::avr::ATMega32U4Props {
-  typedef struct ImagoKeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
+  struct KeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
     AVR_KEYSCANNER_PROPS(
       ROW_PIN_LIST({ PIN_F6, PIN_F5, PIN_F4, PIN_F1, PIN_F0}),
       COL_PIN_LIST({ PIN_B2, PIN_B7, PIN_E2, PIN_C7, PIN_C6, PIN_B6, PIN_B5, PIN_B4, PIN_D7, PIN_D6,  PIN_D4, PIN_D5, PIN_D3, PIN_D2, PIN_E6, PIN_F7})
     );
-  } KeyScannerProps;
+  };
   typedef kaleidoscope::driver::keyscanner::AVR<KeyScannerProps> KeyScanner;
   typedef ImagoLEDDriverProps LEDDriverProps;
   typedef ImagoLEDDriver LEDDriver;
