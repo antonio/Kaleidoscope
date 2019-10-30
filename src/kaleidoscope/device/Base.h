@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * kaleidoscope::Device -- Kaleidoscope device Base class
+ * kaleidoscope::device::Base -- Kaleidoscope device Base class
  * Copyright (C) 2017, 2018, 2019  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify it under
@@ -54,20 +54,21 @@
  */
 
 namespace kaleidoscope {
+namespace device {
 
-struct DeviceProps {
-  typedef kaleidoscope::driver::keyscanner::NoProps KeyScannerProps;
+struct BaseProps {
+  typedef kaleidoscope::driver::keyscanner::BaseProps KeyScannerProps;
   typedef kaleidoscope::driver::keyscanner::None KeyScanner;
-  typedef kaleidoscope::driver::leddriver::NoProps LEDDriverProps;
+  typedef kaleidoscope::driver::leddriver::BaseProps LEDDriverProps;
   typedef kaleidoscope::driver::leddriver::None LEDDriver;
   typedef kaleidoscope::driver::mcu::None MCU;
   typedef kaleidoscope::driver::bootloader::None Bootloader;
-  typedef kaleidoscope::driver::storage::NoProps StorageProps;
+  typedef kaleidoscope::driver::storage::BaseProps StorageProps;
   typedef kaleidoscope::driver::storage::None Storage;
 };
 
 template<typename _DeviceProps>
-class Device {
+class Base {
  private:
   class DummySerial {
    public:
@@ -77,6 +78,7 @@ class Device {
   static DummySerial dummy_serial_;
 
  public:
+  Base() {}
 
   typedef _DeviceProps Props;
 
@@ -87,6 +89,7 @@ class Device {
   typedef typename _DeviceProps::LEDDriver LEDDriver;
   typedef typename _DeviceProps::MCU MCU;
   typedef typename _DeviceProps::Bootloader Bootloader;
+  typedef typename _DeviceProps::StorageProps StorageProps;
   typedef typename _DeviceProps::Storage Storage;
 
   static constexpr uint8_t matrix_rows = KeyScannerProps::matrix_rows;
@@ -499,4 +502,6 @@ class Device {
   Bootloader bootloader_;
   Storage storage_;
 };
+
+}
 }

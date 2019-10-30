@@ -20,7 +20,7 @@
 #ifdef __AVR__
 
 #include <Arduino.h>
-#include "kaleidoscope/Device.h"
+#include "kaleidoscope/device/Base.h"
 
 #include "kaleidoscope/driver/mcu/ATMega32U4.h"
 #include "kaleidoscope/driver/storage/AVREEPROM.h"
@@ -29,14 +29,14 @@ namespace kaleidoscope {
 namespace hardware {
 namespace avr {
 
-struct AVRDeviceProps : kaleidoscope::DeviceProps {
+struct AVRDeviceProps : kaleidoscope::device::BaseProps {
   typedef kaleidoscope::driver::mcu::ATMega32U4 MCU;
   typedef kaleidoscope::driver::storage::AVREEPROMProps StorageProps;
   typedef kaleidoscope::driver::storage::AVREEPROM<StorageProps> Storage;
 };
 
 template <typename _DeviceProps>
-class AVRDevice : public kaleidoscope::Device<_DeviceProps> {
+class AVRDevice : public kaleidoscope::device::Base<_DeviceProps> {
  public:
   auto serialPort() -> decltype(Serial) & {
     return Serial;
