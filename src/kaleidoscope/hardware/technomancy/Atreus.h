@@ -38,7 +38,7 @@ namespace hardware {
 namespace technomancy {
 
 struct AtreusDeviceProps : kaleidoscope::hardware::avr::AVRDeviceProps {
-  struct AtreusKeyScannerProps : public kaleidoscope::driver::keyscanner::ATMegaProps {
+  typedef struct AtreusKeyScannerProps : public kaleidoscope::driver::keyscanner::ATMegaProps {
 #ifdef KALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR
     ATMEGA_KEYSCANNER_PROPS(
       ROW_PIN_LIST({PIN_D0, PIN_D1, PIN_D3, PIN_D2}),

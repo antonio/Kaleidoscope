@@ -49,7 +49,7 @@ namespace hardware {
 namespace ez {
 
 struct ErgoDoxDeviceProps : public kaleidoscope::hardware::avr::AVRDeviceProps {
-  struct ErgoDoxKeyScannerProps : kaleidoscope::driver::keyscanner::BaseProps {
+  typedef struct ErgoDoxKeyScannerProps : kaleidoscope::driver::keyscanner::BaseProps {
     KEYSCANNER_PROPS(14, 6);
   } KeyScannerProps;
   typedef kaleidoscope::driver::bootloader::avr::HalfKay Bootloader;
