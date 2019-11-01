@@ -24,13 +24,13 @@
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/Caterina.h"
-#include "kaleidoscope/device/avr/ATMega32U4.h"
+#include "kaleidoscope/device/ATMega32U4Keyboard.h"
 
 namespace kaleidoscope {
 namespace device {
 namespace technomancy {
 
-struct Atreus2Props : kaleidoscope::device::avr::ATMega32U4Props {
+struct Atreus2Props : kaleidoscope::device::ATMega32U4KeyboardProps {
   struct KeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
     AVR_KEYSCANNER_PROPS(
       ROW_PIN_LIST({PIN_F6, PIN_F5, PIN_F4, PIN_F1}),
@@ -41,7 +41,7 @@ struct Atreus2Props : kaleidoscope::device::avr::ATMega32U4Props {
   typedef kaleidoscope::driver::bootloader::avr::Caterina BootLoader;
 };
 
-class Atreus2: public kaleidoscope::device::avr::ATMega32U4<Atreus2Props> {};
+class Atreus2: public kaleidoscope::device::ATMega32U4Keyboard<Atreus2Props> {};
 
 #define PER_KEY_DATA(dflt,                                                    \
     R0C0, R0C1, R0C2, R0C3, R0C4,             R0C7, R0C8, R0C9, R0C10, R0C11, \

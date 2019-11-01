@@ -182,7 +182,7 @@ void Imago::setup() {
   }
   TWBR = 10;
 
-  kaleidoscope::device::avr::ATMega32U4<ImagoProps>::setup();
+  kaleidoscope::device::ATMega32U4Keyboard<ImagoProps>::setup();
 }
 
 }

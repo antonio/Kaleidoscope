@@ -25,13 +25,13 @@
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/FLIP.h"
-#include "kaleidoscope/device/avr/ATMega32U4.h"
+#include "kaleidoscope/device/ATMega32U4Keyboard.h"
 
 namespace kaleidoscope {
 namespace device {
 namespace kbdfans {
 
-struct KBD4xProps : kaleidoscope::device::avr::ATMega32U4Props {
+struct KBD4xProps : kaleidoscope::device::ATMega32U4KeyboardProps {
   struct KeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
     AVR_KEYSCANNER_PROPS(
       ROW_PIN_LIST({ PIN_D0, PIN_D1, PIN_D2, PIN_D3 }),
@@ -42,7 +42,7 @@ struct KBD4xProps : kaleidoscope::device::avr::ATMega32U4Props {
   typedef kaleidoscope::driver::bootloader::avr::FLIP Bootloader;
 };
 
-class KBD4x: public kaleidoscope::device::avr::ATMega32U4<KBD4xProps> {
+class KBD4x: public kaleidoscope::device::ATMega32U4Keyboard<KBD4xProps> {
  public:
   KBD4x() {
     mcu_.disableJTAG();

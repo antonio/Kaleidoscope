@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * device::avr::ATMega32U4 -- Generic ATMega32U4 device base class
+ * device::ATMega32U4Keyboard -- Generic ATMega32U4 keyboard base class
  * Copyright (C) 2019  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,23 +28,21 @@
 
 namespace kaleidoscope {
 namespace device {
-namespace avr {
 
-struct ATMega32U4Props : kaleidoscope::device::BaseProps {
+struct ATMega32U4KeyboardProps : kaleidoscope::device::BaseProps {
   typedef kaleidoscope::driver::mcu::ATMega32U4 MCU;
   typedef kaleidoscope::driver::storage::ATMega32U4EEPROMProps StorageProps;
   typedef kaleidoscope::driver::storage::AVREEPROM<StorageProps> Storage;
 };
 
 template <typename _DeviceProps>
-class ATMega32U4 : public kaleidoscope::device::Base<_DeviceProps> {
+class ATMega32U4Keyboard : public kaleidoscope::device::Base<_DeviceProps> {
  public:
   auto serialPort() -> decltype(Serial) & {
     return Serial;
   }
 };
 
-}
 }
 }
 

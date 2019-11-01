@@ -32,13 +32,13 @@
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/FLIP.h"
-#include "kaleidoscope/device/avr/ATMega32U4.h"
+#include "kaleidoscope/device/ATMega32U4Keyboard.h"
 
 namespace kaleidoscope {
 namespace device {
 namespace softhruf {
 
-struct SplitographyProps : kaleidoscope::device::avr::ATMega32U4Props {
+struct SplitographyProps : kaleidoscope::device::ATMega32U4KeyboardProps {
   struct KeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
     AVR_KEYSCANNER_PROPS(
       ROW_PIN_LIST({ PIN_D0, PIN_D1, PIN_D2, PIN_D3 }),
@@ -49,7 +49,7 @@ struct SplitographyProps : kaleidoscope::device::avr::ATMega32U4Props {
   typedef kaleidoscope::driver::bootloader::avr::FLIP BootLoader;
 };
 
-class Splitography: public kaleidoscope::device::avr::ATMega32U4<SplitographyProps> {
+class Splitography: public kaleidoscope::device::ATMega32U4Keyboard<SplitographyProps> {
  public:
   Splitography() {
     mcu_.disableJTAG();

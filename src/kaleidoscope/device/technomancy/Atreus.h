@@ -30,13 +30,13 @@
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/HalfKay.h"
-#include "kaleidoscope/device/avr/ATMega32U4.h"
+#include "kaleidoscope/device/ATMega32U4Keyboard.h"
 
 namespace kaleidoscope {
 namespace device {
 namespace technomancy {
 
-struct AtreusProps : kaleidoscope::device::avr::ATMega32U4Props {
+struct AtreusProps : kaleidoscope::device::ATMega32U4KeyboardProps {
   struct KeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
 #ifdef KALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR
     AVR_KEYSCANNER_PROPS(
@@ -63,7 +63,7 @@ struct AtreusProps : kaleidoscope::device::avr::ATMega32U4Props {
   typedef kaleidoscope::driver::bootloader::avr::HalfKay BootLoader;
 };
 
-class Atreus: public kaleidoscope::device::avr::ATMega32U4<AtreusProps> {};
+class Atreus: public kaleidoscope::device::ATMega32U4Keyboard<AtreusProps> {};
 
 #define PER_KEY_DATA(dflt,                                                  \
     R0C0, R0C1, R0C2, R0C3, R0C4,             R0C7, R0C8, R0C9, R0C10, R0C11, \
