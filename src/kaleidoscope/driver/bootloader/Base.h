@@ -25,6 +25,7 @@ class Base {
  public:
   Base() {}
 
+  void setup() {}
   static void rebootBootloader() {}
 };
 

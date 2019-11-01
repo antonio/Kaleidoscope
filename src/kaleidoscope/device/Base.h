@@ -462,9 +462,11 @@ class Base {
    * bring it up into a useful state.
    */
   void setup() {
+    bootloader_.setup();
+    mcu_.setup();
+    storage_.setup();
     key_scanner_.setup();
     led_driver_.setup();
-    mcu_.setup();
   }
 
   /**

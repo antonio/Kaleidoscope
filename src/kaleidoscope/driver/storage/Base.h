@@ -50,6 +50,7 @@ class Base {
     return _StorageProps::length;
   }
 
+  void setup() {}
   void commit() {}
 };
 
