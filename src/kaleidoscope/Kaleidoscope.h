@@ -39,8 +39,8 @@ void setup();
 #include KALEIDOSCOPE_HARDWARE_H
 #include "kaleidoscope_internal/deprecations.h"
 
-extern DEVICE_CLASS_NAME Device;
-static constexpr DEPRECATED(KEYBOARDHARDWARE) DEVICE_CLASS_NAME &KeyboardHardware = Device;
+extern kaleidoscope::Device Device;
+static constexpr DEPRECATED(KEYBOARDHARDWARE) kaleidoscope::Device &KeyboardHardware = Device;
 
 #ifdef PER_KEY_DATA_STACKED
 #define KEYMAP_STACKED(...) { PER_KEY_DATA_STACKED(XXX, __VA_ARGS__) }
@@ -50,9 +50,9 @@ static constexpr DEPRECATED(KEYBOARDHARDWARE) DEVICE_CLASS_NAME &KeyboardHardwar
 #define KEYMAP(...) { PER_KEY_DATA(XXX, __VA_ARGS__) }
 #endif
 
-#define ROWS (Device.matrix_rows)
-#define COLS (Device.matrix_columns)
-#define LED_COUNT (Device.led_count)
+#define ROWS (::Device.matrix_rows)
+#define COLS (::Device.matrix_columns)
+#define LED_COUNT (::Device.led_count)
 
 #include "kaleidoscope/KeyAddr.h"
 #include "kaleidoscope/key_events.h"
@@ -109,7 +109,7 @@ class Kaleidoscope_ {
   void setup(void);
   void loop(void);
 
-  static constexpr bool has_leds = (Device.led_count > 0);
+  static constexpr bool has_leds = (::Device.led_count > 0);
 
   /** Detaching from / attaching to the host.
    *
@@ -124,10 +124,10 @@ class Kaleidoscope_ {
    * detach and attach.
    */
   void detachFromHost() {
-    Device.detachFromHost();
+    ::Device.detachFromHost();
   }
   void attachToHost() {
-    Device.attachToHost();
+    ::Device.attachToHost();
   }
 
   /** Returns the timer as it was at the start of the cycle.

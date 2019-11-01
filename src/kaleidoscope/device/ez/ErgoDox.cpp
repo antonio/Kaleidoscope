@@ -229,6 +229,4 @@ uint8_t ErgoDox::pressedKeyswitchCount() {
 }
 }
 
-EXPORT_DEVICE();
-
 #endif

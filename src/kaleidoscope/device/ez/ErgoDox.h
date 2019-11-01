@@ -30,8 +30,6 @@
 #include <Arduino.h>
 
 #include "kaleidoscope/device/ez/ErgoDox/ErgoDoxScanner.h"
-
-#define DEVICE_CLASS_NAME kaleidoscope::device::ez::ErgoDox
 #include "Kaleidoscope-HIDAdaptor-KeyboardioHID.h"
 
 struct cRGB {
@@ -135,6 +133,9 @@ class ErgoDox : public kaleidoscope::device::avr::ATMega32U4<ErgoDoxProps> {
     r0c13, r1c13, r2c13, r3c13, r4c13, dflt
 }
 }
+
+typedef kaleidoscope::device::ez::ErgoDox Device;
+
 }
 
 #include "kaleidoscope/device/key_indexes.h"

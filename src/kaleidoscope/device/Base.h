@@ -35,12 +35,8 @@
 #error cRGB and CRGB *must* be defined before including this header!
 #endif
 
-#define EXPORT_DEVICE()                         \
-  DEVICE_CLASS_NAME Device;                     \
-
-/* All hardware libraries must define the following macros:
- * DEVICE_CLASS_NAME - the name of your public object conforming to
- *   the 'class Hardware' interface below.
+/* All hardware libraries must define the following types and macros:
+ * kaleidoscope::Device - a typedef to your device's class.
  * CRGB(r,g,b) - explained below
  * cRGB, a structure with at least three members: r, g, and b -
  * compilation will fail otherwise.

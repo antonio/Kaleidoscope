@@ -306,7 +306,5 @@ void Model01::enableHardwareTestMode() {
 }
 }
 
-EXPORT_DEVICE();
-
 #endif
 #endif

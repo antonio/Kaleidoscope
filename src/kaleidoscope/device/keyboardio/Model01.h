@@ -21,7 +21,6 @@
 
 #include <Arduino.h>
 
-#define DEVICE_CLASS_NAME kaleidoscope::device::keyboardio::Model01
 #include "Kaleidoscope-HIDAdaptor-KeyboardioHID.h"
 #include "KeyboardioScanner.h"
 
@@ -111,6 +110,9 @@ class Model01 : public kaleidoscope::device::avr::ATMega32U4<Model01Props> {
 
 }
 }
+
+typedef kaleidoscope::device::keyboardio::Model01 Device;
+
 }
 
 #include "kaleidoscope/device/key_indexes.h"

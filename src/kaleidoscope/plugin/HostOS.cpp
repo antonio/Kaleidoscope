@@ -33,15 +33,15 @@ EventHandlerResult HostOS::onSetup(void) {
     return EventHandlerResult::OK;
   }
 
-  os_ = (hostos::Type)Device.storage().read(eeprom_slice_);
+  os_ = (hostos::Type)::Device.storage().read(eeprom_slice_);
 
   return EventHandlerResult::OK;
 }
 
 void HostOS::os(hostos::Type new_os) {
   os_ = new_os;
-  Device.storage().update(eeprom_slice_, os_);
-  Device.storage().commit();
+  ::Device.storage().update(eeprom_slice_, os_);
+  ::Device.storage().commit();
 }
 
 }

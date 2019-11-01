@@ -39,6 +39,4 @@ AVR_KEYSCANNER_BOILERPLATE();
 }
 }
 
-EXPORT_DEVICE();
-
 #endif

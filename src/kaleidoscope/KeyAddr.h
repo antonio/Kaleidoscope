@@ -18,4 +18,4 @@
 
 #include KALEIDOSCOPE_HARDWARE_H
 
-typedef DEVICE_CLASS_NAME::KeyAddr KeyAddr;
+typedef kaleidoscope::Device::KeyAddr KeyAddr;

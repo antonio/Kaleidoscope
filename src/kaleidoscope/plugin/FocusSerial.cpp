@@ -27,20 +27,20 @@ namespace plugin {
 char FocusSerial::command_[32];
 
 void FocusSerial::drain(void) {
-  if (Device.serialPort().available())
-    while (Device.serialPort().peek() != '\n')
-      Device.serialPort().read();
+  if (::Device.serialPort().available())
+    while (::Device.serialPort().peek() != '\n')
+      ::Device.serialPort().read();
 }
 
 EventHandlerResult FocusSerial::beforeReportingState() {
-  if (Device.serialPort().available() == 0)
+  if (::Device.serialPort().available() == 0)
     return EventHandlerResult::OK;
 
   uint8_t i = 0;
   do {
-    command_[i++] = Device.serialPort().read();
+    command_[i++] = ::Device.serialPort().read();
 
-    if (Device.serialPort().peek() == '\n')
+    if (::Device.serialPort().peek() == '\n')
       break;
   } while (command_[i - 1] != ' ' && i < 32);
   if (command_[i - 1] == ' ')
@@ -50,12 +50,12 @@ EventHandlerResult FocusSerial::beforeReportingState() {
 
   Kaleidoscope.onFocusEvent(command_);
 
-  Device.serialPort().println(F("\r\n."));
+  ::Device.serialPort().println(F("\r\n."));
 
   drain();
 
-  if (Device.serialPort().peek() == '\n')
-    Device.serialPort().read();
+  if (::Device.serialPort().peek() == '\n')
+    ::Device.serialPort().read();
 
   return EventHandlerResult::OK;
 }
@@ -65,7 +65,7 @@ bool FocusSerial::handleHelp(const char *command,
   if (strcmp_P(command, PSTR("help")) != 0)
     return false;
 
-  Device.serialPort().println((const __FlashStringHelper *)help_message);
+  ::Device.serialPort().println((const __FlashStringHelper *)help_message);
   return true;
 }
 
@@ -75,7 +75,7 @@ EventHandlerResult FocusSerial::onFocusEvent(const char *command) {
 }
 
 void FocusSerial::printBool(bool b) {
-  Device.serialPort().print((b) ? F("true") : F("false"));
+  ::Device.serialPort().print((b) ? F("true") : F("false"));
 }
 
 }

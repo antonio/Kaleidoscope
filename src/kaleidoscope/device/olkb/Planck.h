@@ -20,7 +20,6 @@
 #ifdef ARDUINO_AVR_PLANCK
 
 #include <Arduino.h>
-#define DEVICE_CLASS_NAME kaleidoscope::device::olkb::Planck
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/HalfKay.h"
@@ -55,8 +54,10 @@ class Planck: public kaleidoscope::device::avr::ATMega32U4<PlanckProps> {};
          R3C0, R3C1, R3C2, R3C3, R3C4, R3C5, R3C6, R3C7, R3C8, R3C9, R3C10, R3C11
 
 }
-
 }
+
+typedef kaleidoscope::device::olkb::Planck Device;
+
 }
 
 #include "kaleidoscope/device/key_indexes.h"

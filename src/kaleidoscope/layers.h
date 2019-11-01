@@ -134,8 +134,8 @@ class Layer_ {
  private:
   static uint32_t layer_state_;
   static uint8_t top_active_layer_;
-  static Key live_composite_keymap_[Device.numKeys()];
-  static uint8_t active_layers_[Device.numKeys()];
+  static Key live_composite_keymap_[::Device.numKeys()];
+  static uint8_t active_layers_[::Device.numKeys()];
 
   static void handleKeymapKeyswitchEvent(Key keymapEntry, uint8_t keyState);
   static void updateTopActiveLayer(void);

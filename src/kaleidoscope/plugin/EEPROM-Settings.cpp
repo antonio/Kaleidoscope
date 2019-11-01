@@ -28,7 +28,7 @@ bool EEPROMSettings::sealed_;
 uint16_t EEPROMSettings::next_start_ = sizeof(EEPROMSettings::settings);
 
 EventHandlerResult EEPROMSettings::onSetup() {
-  Device.storage().get(0, settings_);
+  ::Device.storage().get(0, settings_);
 
   /* If the version is undefined, set up sensible defaults. */
   if (settings_.version == VERSION_UNDEFINED) {
@@ -49,8 +49,8 @@ EventHandlerResult EEPROMSettings::onSetup() {
      * not able to catch all writes yet. For the sake of consistency, if we
      * encounter a firmware with no version defined, we'll set sensible
      * defaults. */
-    Device.storage().put(0, settings_);
-    Device.storage().commit();
+    ::Device.storage().put(0, settings_);
+    ::Device.storage().commit();
   }
   return EventHandlerResult::OK;
 }
@@ -147,8 +147,8 @@ uint16_t EEPROMSettings::used(void) {
 }
 
 void EEPROMSettings::update(void) {
-  Device.storage().put(0, settings_);
-  Device.storage().commit();
+  ::Device.storage().put(0, settings_);
+  ::Device.storage().commit();
   is_valid_ = true;
 }
 
@@ -222,22 +222,22 @@ EventHandlerResult FocusEEPROMCommand::onFocusEvent(const char *command) {
   switch (sub_command) {
   case CONTENTS: {
     if (::Focus.isEOL()) {
-      for (uint16_t i = 0; i < Device.storage().length(); i++) {
-        uint8_t d = Device.storage().read(i);
+      for (uint16_t i = 0; i < ::Device.storage().length(); i++) {
+        uint8_t d = ::Device.storage().read(i);
         ::Focus.send(d);
       }
     } else {
-      for (uint16_t i = 0; i < Device.storage().length() && !::Focus.isEOL(); i++) {
+      for (uint16_t i = 0; i < ::Device.storage().length() && !::Focus.isEOL(); i++) {
         uint8_t d;
         ::Focus.read(d);
-        Device.storage().update(i, d);
+        ::Device.storage().update(i, d);
       }
     }
 
     break;
   }
   case FREE:
-    ::Focus.send(Device.storage().length() - ::EEPROMSettings.used());
+    ::Focus.send(::Device.storage().length() - ::EEPROMSettings.used());
     break;
   }
 

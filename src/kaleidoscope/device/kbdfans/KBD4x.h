@@ -23,8 +23,6 @@
 
 #include <Arduino.h>
 
-#define DEVICE_CLASS_NAME kaleidoscope::device::kbdfans::KBD4x
-
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/FLIP.h"
 #include "kaleidoscope/device/avr/ATMega32U4.h"
@@ -63,8 +61,10 @@ class KBD4x: public kaleidoscope::device::avr::ATMega32U4<KBD4xProps> {
          R2C0, R2C1, R2C2, R2C3, R2C4, R2C5, R2C6, R2C7, R2C8, R2C9, R2C10, R2C11, \
          R3C0, R3C1, R3C2, R3C3, R3C4, R3C5, R3C5, R3C7, R3C8, R3C9, R3C10, R3C11
 }
-
 }
+
+typedef kaleidoscope::device::kbdfans::KBD4x Device;
+
 }
 
 #include "kaleidoscope/device/key_indexes.h"

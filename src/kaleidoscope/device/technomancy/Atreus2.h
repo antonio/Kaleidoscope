@@ -21,7 +21,6 @@
 #ifdef ARDUINO_AVR_ATREUS2
 
 #include <Arduino.h>
-#define DEVICE_CLASS_NAME kaleidoscope::device::technomancy::Atreus2
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/Caterina.h"
@@ -72,6 +71,9 @@ class Atreus2: public kaleidoscope::device::avr::ATMega32U4<Atreus2Props> {};
   R3C0, R3C1, R3C2, R3C3, R3C4, R3C5, R3C6, R3C7, R3C8, R3C9, R3C10, R3C11
 }
 }
+
+typedef kaleidoscope::device::technomancy::Atreus2 Device;
+
 }
 
 #include "kaleidoscope/device/key_indexes.h"

@@ -20,7 +20,6 @@
 #ifdef ARDUINO_AVR_KEYBOARDIO_IMAGO
 
 #include <Arduino.h>
-#define DEVICE_CLASS_NAME kaleidoscope::device::keyboardio::Imago
 
 struct cRGB {
   uint8_t b;
@@ -94,8 +93,10 @@ class Imago: public kaleidoscope::device::avr::ATMega32U4<ImagoProps> {
          R4C0, R4C1, R4C2, R4C3, XXX,  R4C5, R4C6, R4C7, R4C8, XXX,  R4C10, R4C11, R4C12, R4C13, XXX,   R4C15
 
 }
-
 }
+
+typedef kaleidoscope::device::keyboardio::Imago Device;
+
 }
 
 #include "kaleidoscope/device/key_indexes.h"

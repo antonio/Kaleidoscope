@@ -29,7 +29,6 @@
 #define KALEIDOSCOPE_BOOTLOADER_FLIP_WORKAROUND 1
 
 #include <Arduino.h>
-#define DEVICE_CLASS_NAME kaleidoscope::device::softhruf::Splitography
 
 #include "kaleidoscope/driver/keyscanner/AVR.h"
 #include "kaleidoscope/driver/bootloader/avr/FLIP.h"
@@ -87,6 +86,9 @@ class Splitography: public kaleidoscope::device::avr::ATMega32U4<SplitographyPro
 
 }
 }
+
+typedef kaleidoscope::device::softhruf::Splitography Device;
+
 }
 
 #include "kaleidoscope/device/key_indexes.h"
