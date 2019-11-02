@@ -18,7 +18,6 @@
 #ifdef ARDUINO_AVR_KEYBOARDIO_IMAGO
 
 #include <Kaleidoscope.h>
-#include <avr/wdt.h>
 
 extern "C" {
 #include "twi.h"

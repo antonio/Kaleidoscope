@@ -18,9 +18,6 @@
 #ifdef ARDUINO_AVR_KBD4X
 
 #include <Kaleidoscope.h>
-#include <avr/wdt.h>
-#include <avr/boot.h>
-
 
 namespace kaleidoscope {
 namespace device {

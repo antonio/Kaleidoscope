@@ -25,7 +25,6 @@
 #ifdef ARDUINO_AVR_SPLITOGRAPHY
 
 #include <Kaleidoscope.h>
-#include <avr/wdt.h>
 
 namespace kaleidoscope {
 namespace device {

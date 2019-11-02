@@ -19,7 +19,6 @@
 #ifdef ARDUINO_AVR_ATREUS2
 
 #include <Kaleidoscope.h>
-#include <avr/wdt.h>
 
 namespace kaleidoscope {
 namespace device {
