@@ -36,28 +36,21 @@ namespace kaleidoscope {
 namespace device {
 namespace technomancy {
 
-struct AtreusProps : kaleidoscope::device::ATMega32U4KeyboardProps {
-  struct KeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
-    AVR_KEYSCANNER_PROPS(
+ATMEGA32U4_KEYBOARD(
+  Atreus, HalfKay,
 #ifdef KALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR
-      ROW_PIN_LIST({PIN_D0, PIN_D1, PIN_D3, PIN_D2}),
-      COL_PIN_LIST({PIN_D7, PIN_C6, PIN_B5, PIN_B4, PIN_E6, PIN_D4, PIN_B6, PIN_F6, PIN_F7, PIN_D6, PIN_B7})
+  ROW_PIN_LIST({PIN_D0, PIN_D1, PIN_D3, PIN_D2}),
+  COL_PIN_LIST({PIN_D7, PIN_C6, PIN_B5, PIN_B4, PIN_E6, PIN_D4, PIN_B6, PIN_F6, PIN_F7, PIN_D6, PIN_B7})
 #endif
 #ifdef KALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR_DOWN
-      ROW_PIN_LIST({PIN_D0, PIN_D1, PIN_D3, PIN_D2}),
-      COL_PIN_LIST({PIN_B7, PIN_D6, PIN_F7, PIN_F6, PIN_B6, PIN_D4, PIN_E6, PIN_B4, PIN_B5, PIN_C6, PIN_D7})
+  ROW_PIN_LIST({PIN_D0, PIN_D1, PIN_D3, PIN_D2}),
+  COL_PIN_LIST({PIN_B7, PIN_D6, PIN_F7, PIN_F6, PIN_B6, PIN_D4, PIN_E6, PIN_B4, PIN_B5, PIN_C6, PIN_D7})
 #endif
 #ifdef KALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_LEGACY_TEENSY2
-      ROW_PIN_LIST({PIN_D0, PIN_D1, PIN_D2, PIN_D3}),
-      COL_PIN_LIST({PIN_F6, PIN_F5, PIN_F4, PIN_B7, PIN_B6, PIN_B5, PIN_B4, PIN_B3, PIN_B2, PIN_B1, PIN_B0})
+  ROW_PIN_LIST({PIN_D0, PIN_D1, PIN_D2, PIN_D3}),
+  COL_PIN_LIST({PIN_F6, PIN_F5, PIN_F4, PIN_B7, PIN_B6, PIN_B5, PIN_B4, PIN_B3, PIN_B2, PIN_B1, PIN_B0})
 #endif
-    );
-  };
-  typedef kaleidoscope::driver::keyscanner::AVR<KeyScannerProps> KeyScanner;
-  typedef kaleidoscope::driver::bootloader::avr::HalfKay BootLoader;
-};
-
-class Atreus: public kaleidoscope::device::ATMega32U4Keyboard<AtreusProps> {};
+);
 
 #define PER_KEY_DATA(dflt,                                                  \
     R0C0, R0C1, R0C2, R0C3, R0C4,             R0C7, R0C8, R0C9, R0C10, R0C11, \

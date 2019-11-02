@@ -29,18 +29,11 @@ namespace kaleidoscope {
 namespace device {
 namespace olkb {
 
-struct PlanckProps : kaleidoscope::device::ATMega32U4KeyboardProps {
-  struct KeyScannerProps : public kaleidoscope::driver::keyscanner::AVRProps {
-    AVR_KEYSCANNER_PROPS(
-      ROW_PIN_LIST({ PIN_D0, PIN_D5, PIN_B5, PIN_B6 }),
-      COL_PIN_LIST({ PIN_F1, PIN_F0, PIN_B0, PIN_C7, PIN_F4, PIN_F5, PIN_F6, PIN_F7, PIN_D4, PIN_D6, PIN_B4, PIN_D7 })
-    );
-  };
-  typedef kaleidoscope::driver::keyscanner::AVR<KeyScannerProps> KeyScanner;
-  typedef kaleidoscope::driver::bootloader::avr::HalfKay BootLoader;
-};
-
-class Planck: public kaleidoscope::device::ATMega32U4Keyboard<PlanckProps> {};
+ATMEGA32U4_KEYBOARD(
+  Planck, HalfKay,
+  ROW_PIN_LIST({ PIN_D0, PIN_D5, PIN_B5, PIN_B6 }),
+  COL_PIN_LIST({ PIN_F1, PIN_F0, PIN_B0, PIN_C7, PIN_F4, PIN_F5, PIN_F6, PIN_F7, PIN_D4, PIN_D6, PIN_B4, PIN_D7 })
+);
 
 #define PER_KEY_DATA(dflt,                                                       \
          R0C0, R0C1, R0C2, R0C3, R0C4, R0C5, R0C6, R0C7, R0C8, R0C9, R0C10, R0C11, \
