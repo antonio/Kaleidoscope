@@ -55,8 +55,8 @@ Key EEPROMKeymap::getKey(uint8_t layer, KeyAddr key_addr) {
 
   uint16_t pos = ((layer * Kaleidoscope.device().numKeys()) + key_addr.toInt()) * 2;
 
-  key.flags = Kaleidoscope.device().storage().read(keymap_base_ + pos);
-  key.keyCode = Kaleidoscope.device().storage().read(keymap_base_ + pos + 1);
+  key.flags = Kaleidoscope.storage().read(keymap_base_ + pos);
+  key.keyCode = Kaleidoscope.storage().read(keymap_base_ + pos + 1);
 
   return key;
 }
@@ -77,8 +77,8 @@ uint16_t EEPROMKeymap::keymap_base(void) {
 }
 
 void EEPROMKeymap::updateKey(uint16_t base_pos, Key key) {
-  Kaleidoscope.device().storage().update(keymap_base_ + base_pos * 2, key.flags);
-  Kaleidoscope.device().storage().update(keymap_base_ + base_pos * 2 + 1, key.keyCode);
+  Kaleidoscope.storage().update(keymap_base_ + base_pos * 2, key.flags);
+  Kaleidoscope.storage().update(keymap_base_ + base_pos * 2 + 1, key.keyCode);
 }
 
 void EEPROMKeymap::dumpKeymap(uint8_t layers, Key(*getkey)(uint8_t, KeyAddr)) {
@@ -157,7 +157,7 @@ EventHandlerResult EEPROMKeymap::onFocusEvent(const char *command) {
       updateKey(i, k);
       i++;
     }
-    Kaleidoscope.device().storage().commit();
+    Kaleidoscope.storage().commit();
   }
 
   return EventHandlerResult::EVENT_CONSUMED;

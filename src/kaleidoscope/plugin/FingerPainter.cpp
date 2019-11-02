@@ -101,9 +101,9 @@ EventHandlerResult FingerPainter::onFocusEvent(const char *command) {
 
   if (sub_command == CLEAR) {
     for (uint16_t i = 0; i < Kaleidoscope.device().numKeys() / 2; i++) {
-      Kaleidoscope.device().storage().update(color_base_ + i, 0);
+      Kaleidoscope.storage().update(color_base_ + i, 0);
     }
-    Kaleidoscope.device().storage().commit();
+    Kaleidoscope.storage().commit();
     return EventHandlerResult::OK;
   }
 

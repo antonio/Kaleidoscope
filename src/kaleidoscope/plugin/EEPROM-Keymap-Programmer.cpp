@@ -39,7 +39,7 @@ void EEPROMKeymapProgrammer::nextState(void) {
   case WAIT_FOR_CODE:
   case WAIT_FOR_SOURCE_KEY:
     ::EEPROMKeymap.updateKey(update_position_, new_key_);
-    Kaleidoscope.device().storage().commit();
+    Kaleidoscope.storage().commit();
     cancel();
     break;
   }

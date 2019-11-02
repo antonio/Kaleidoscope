@@ -134,6 +134,26 @@ class Kaleidoscope_ {
     device().attachToHost();
   }
 
+  /** Wrapper functions for some device features.
+   *
+   * The next three functions wrap methods of the device plugin, to make using
+   * them in user sketches easier, and require less typing.
+   *
+   * For what they do, please see the documentation in the
+   * `kaleidoscope::device::Base` class.
+   */
+  auto serialPort() -> decltype(device().serialPort()) & {
+    return device().serialPort();
+  }
+
+  auto storage() -> decltype(device().storage()) & {
+    return device().storage();
+  }
+
+  void rebootBootloader() {
+    device().rebootBootloader();
+  }
+
   /** Returns the timer as it was at the start of the cycle.
    * The goal of this method is two-fold:
    *  - To reduce the amount of calls to millis(), providing something cheaper.

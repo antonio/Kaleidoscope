@@ -43,7 +43,7 @@ void setup () {
     return;
   }
 
-  Kaleidoscope.device().storage().get(settingsBase, testSettings);
+  Kaleidoscope.storage().get(settingsBase, testSettings);
 }
 ```
 
