@@ -34,12 +34,12 @@ EventHandlerResult MagicCombo::beforeReportingState() {
       if (comboKey == 0)
         break;
 
-      match &= ::Device.isKeyswitchPressed(comboKey);
+      match &= Kaleidoscope.device().isKeyswitchPressed(comboKey);
       if (!match)
         break;
     }
 
-    if (j != ::Device.pressedKeyswitchCount())
+    if (j != Kaleidoscope.device().pressedKeyswitchCount())
       match = false;
 
     if (match && Kaleidoscope.hasTimeExpired(start_time_, min_interval)) {

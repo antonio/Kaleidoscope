@@ -56,8 +56,8 @@ void systerAction(kaleidoscope::plugin::Syster::action_t action, const char *sym
     kaleidoscope::hid::sendKeyboardReport();
     break;
   case kaleidoscope::plugin::Syster::SymbolAction:
-    Device.serialPort().print("systerAction: symbol=");
-    Device.serialPort().println(symbol);
+    Kaleidoscope.device().serialPort().print("systerAction: symbol=");
+    Kaleidoscope.device().serialPort().println(symbol);
     if (strcmp(symbol, "coffee") == 0) {
       Unicode.type(0x2615);
     }

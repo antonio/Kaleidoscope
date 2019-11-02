@@ -83,7 +83,7 @@ KALEIDOSCOPE_INIT_PLUGINS(Macros);
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
   case RESET:
-    Device.rebootBootloader();
+    Kaleidoscope.device().rebootBootloader();
     break;
   default:
     break;
