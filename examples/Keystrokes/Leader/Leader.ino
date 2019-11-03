@@ -39,12 +39,14 @@ KEYMAPS(
 )
 // *INDENT-ON*
 
+auto &serialPort = Kaleidoscope.serialPort();
+
 static void leaderTestA(uint8_t seq_index) {
-  Kaleidoscope.serialPort().println(F("leaderTestA"));
+  serialPort.println(F("leaderTestA"));
 }
 
 static void leaderTestAA(uint8_t seq_index) {
-  Kaleidoscope.serialPort().println(F("leaderTestAA"));
+  serialPort.println(F("leaderTestAA"));
 }
 
 static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
