@@ -5,7 +5,7 @@
 /**
  * These #include directives pull in the Kaleidoscope firmware core,
  * as well as the Kaleidoscope plugins we use in the Model 100's firmware
- */
+  */
 
 // The Kaleidoscope core
 #include "Kaleidoscope.h"
@@ -171,6 +171,9 @@ enum {
   PRIMARY,
   NUMPAD,
   FUNCTION,
+  MOUSE,
+  GAMING,
+  GAMING_ALT,
 };  // layers
 
 
@@ -187,10 +190,10 @@ enum {
   *
   */
 
-#define PRIMARY_KEYMAP_QWERTY
+// #define PRIMARY_KEYMAP_QWERTY
 // #define PRIMARY_KEYMAP_DVORAK
 // #define PRIMARY_KEYMAP_COLEMAK
-// #define PRIMARY_KEYMAP_CUSTOM
+#define PRIMARY_KEYMAP_CUSTOM
 
 
 /* This comment temporarily turns off astyle's indent enforcement
@@ -253,27 +256,25 @@ KEYMAPS(
 #elif defined (PRIMARY_KEYMAP_CUSTOM)
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION),
+  (Key_Backtick, Key_1, Key_2, Key_3, Key_4, Key_5, Key_6,
+  Key_Tab, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_LeftBracket,
+  Key_Escape, Key_A, Key_S, Key_D, Key_F, Key_G,
+  Key_LeftShift, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftParen,
+  Key_LeftAlt, Key_LeftGui, Key_Hyper, ___,
+  ShiftToLayer(FUNCTION),
 
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
-   Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION)),
+  Key_7, Key_8, Key_9, Key_0, Key_Minus, Key_Equals, Key_Backspace,
+  Key_RightBracket, Key_Y, Key_U, Key_I, Key_O, Key_P, Key_Backslash,
+  Key_H, Key_J, Key_K, Key_L, Key_Semicolon, Key_Quote,
+  Key_RightParen, Key_N, Key_M, Key_Comma, Key_Period, Key_Slash, Key_RightShift,
+  Key_Enter, Key_Spacebar, Key_RightGui, Key_RightAlt,
+  ShiftToLayer(FUNCTION)),
 
 #else
 
 #error "No default keymap defined. You should make sure that you have a line like '#define PRIMARY_KEYMAP_QWERTY' in your sketch"
 
 #endif
-
-
 
   [NUMPAD] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
@@ -290,20 +291,80 @@ KEYMAPS(
    ___, ___, ___, ___,
    ___),
 
-  [FUNCTION] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_CapsLock,
-   Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
-   Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
-   Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
-   ___, Key_Delete, ___, ___,
+  [FUNCTION] = KEYMAP_STACKED
+  (___, Key_F1, Key_F2, Key_F3, Key_F4, Key_F5, Key_F6,
+  ___, ___, ___, ___, ___, ___, ___,
+  ___, ___, ___, LCTRL(LSHIFT(Key_Tab)), LCTRL(Key_Tab), ___,
+  ___, ___, ___, ___, ___, ___, ___,
+  ___, ___, ___, ___,
+  ___,
+
+  Key_F7, Key_F8, Key_F9, Key_F10, Key_F11, Key_F12, Key_Delete,
+  ___, ___, Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_LeftBracket, Key_RightBracket, ___,
+  Key_LeftArrow, Key_DownArrow, Key_UpArrow, Key_RightArrow, ___, ___,
+  ___, ___, Key_F18, ___, ___, ___, ___,
+  LockLayer(GAMING), ___, ___, ___,
+  ___),
+
+  // [FUNCTION] =  KEYMAP_STACKED
+  // (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_CapsLock,
+  //  Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
+  //  Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
+  //  Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
+  //  ___, Key_Delete, ___, ___,
+  //  ___,
+
+  //  Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
+  //  Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F12,
+  //                              Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
+  //  Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
+  //  ___, ___, Key_Enter, ___,
+  //  ___),
+
+  [MOUSE] =  KEYMAP_STACKED
+  (___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___,
    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F12,
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
-   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
-   ___, ___, Key_Enter, ___,
-   ___)
+   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___,
+   ___),
+
+  [GAMING] = KEYMAP_STACKED(Key_Backtick, Key_1, Key_2, Key_3, Key_4, Key_5, Key_6,
+                            Key_Tab, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_LeftBracket,
+                            Key_Escape, Key_A, Key_S, Key_D, Key_F, Key_G,
+                            Key_LeftShift, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftParen,
+                            Key_LeftAlt, Key_Spacebar, Key_LeftAlt, ShiftToLayer(FUNCTION),
+                            ShiftToLayer(GAMING_ALT),
+
+                            Key_7, Key_8, Key_9, Key_0, Key_Minus, Key_Equals, Key_Backspace,
+                            Key_RightBracket, Key_Y, Key_U, Key_I, Key_O, Key_P, Key_Backslash,
+                            Key_H, Key_J, Key_K, Key_L, Key_Semicolon, Key_Quote,
+                            Key_RightParen, Key_N, Key_M, Key_Comma, Key_Period, Key_Slash, Key_RightShift,
+                            Key_Enter, Key_Spacebar, Key_Spacebar, Key_RightAlt,
+                            ShiftToLayer(FUNCTION)),
+
+  [GAMING_ALT] = KEYMAP_STACKED(Key_7, Key_8, Key_9, Key_0, Key_Minus, Key_Equals, Key_Backspace,
+                                Key_RightBracket, Key_Y, Key_U, Key_I, Key_O, Key_P, Key_Backslash,
+                                Key_H, Key_J, Key_K, Key_L, Key_Semicolon, Key_Quote,
+                                Key_RightParen, Key_N, Key_M, Key_Comma, Key_Period, Key_Slash, Key_RightShift,
+                                Key_LeftAlt, Key_Spacebar, Key_LeftAlt, ShiftToLayer(FUNCTION),
+                                ___,
+
+                                Key_Backtick, Key_1, Key_2, Key_3, Key_4, Key_5, Key_6,
+                                Key_Tab, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_LeftBracket,
+                                Key_Escape, Key_A, Key_S, Key_D, Key_F, Key_G,
+                                Key_LeftShift, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftParen,
+                                Key_LeftAlt, Key_Spacebar, Key_LeftShift, ShiftToLayer(FUNCTION),
+                                ShiftToLayer(FUNCTION))
+
+
 ) // KEYMAPS(
 
 /* Re-enable astyle's indent enforcement */
@@ -634,6 +695,7 @@ void setup() {
   // 'BlazingTrail'. For details on other options, see
   // https://github.com/keyboardio/Kaleidoscope/blob/master/docs/plugins/LED-Stalker.md
   StalkerEffect.variant = STALKER(BlazingTrail);
+  StalkerEffect.activate();
 
   // To make the keymap editable without flashing new firmware, we store
   // additional layers in EEPROM. For now, we reserve space for eight layers. If
@@ -669,6 +731,15 @@ void setup() {
   // firmware starts with LED effects off. This avoids over-taxing devices that
   // don't have a lot of power to share with USB devices
   DefaultLEDModeConfig.activateLEDModeIfUnconfigured(&LEDOff);
+
+  QUKEYS(
+    kaleidoscope::plugin::Qukey(PRIMARY, KeyAddr(2, 0), Key_LeftControl),    // Escape/Ctrl
+    kaleidoscope::plugin::Qukey(PRIMARY, KeyAddr(2, 15), Key_RightControl),  // Quote/Ctrl
+    kaleidoscope::plugin::Qukey(PRIMARY, KeyAddr(2, 8), Key_Hyper),          // Space/Hyper
+    kaleidoscope::plugin::Qukey(GAMING, KeyAddr(2, 0), Key_LeftControl),     // Escape/Ctrl
+    kaleidoscope::plugin::Qukey(GAMING, KeyAddr(2, 15), Key_RightControl),   // Quote/Ctrl
+    kaleidoscope::plugin::Qukey(GAMING, KeyAddr(2, 8), Key_Hyper),           // Space/Hyper
+  );
 }
 
 /** loop is the second of the standard Arduino sketch functions.
