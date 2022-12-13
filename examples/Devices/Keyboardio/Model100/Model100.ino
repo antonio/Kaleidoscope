@@ -260,7 +260,7 @@ KEYMAPS(
   Key_Tab, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_LeftBracket,
   Key_Escape, Key_A, Key_S, Key_D, Key_F, Key_G,
   Key_LeftShift, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftParen,
-  Key_LeftAlt, Key_LeftGui, Key_Hyper, ___,
+  Key_LeftAlt, Key_LeftGui, Key_Hyper, ShiftToLayer(MOUSE),
   ShiftToLayer(FUNCTION),
 
   Key_7, Key_8, Key_9, Key_0, Key_Minus, Key_Equals, Key_Backspace,
@@ -296,7 +296,7 @@ KEYMAPS(
   ___, ___, ___, ___, ___, ___, ___,
   ___, ___, ___, LCTRL(LSHIFT(Key_Tab)), LCTRL(Key_Tab), ___,
   ___, ___, ___, ___, ___, ___, ___,
-  ___, ___, ___, ___,
+  ___, ___, ___, LockLayer(PRIMARY),
   ___,
 
   Key_F7, Key_F8, Key_F9, Key_F10, Key_F11, Key_F12, Key_Delete,
@@ -323,15 +323,15 @@ KEYMAPS(
 
   [MOUSE] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___, Key_mouseBtnR,
    ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___,
    ___,
 
    ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___,
+   Key_mouseBtnL, ___, ___, ___, ___, ___, ___,
+   Key_mouseL, Key_mouseDn, Key_mouseUp, Key_mouseR, ___, ___,
    ___, ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___,
    ___),
@@ -347,7 +347,7 @@ KEYMAPS(
                             Key_RightBracket, Key_Y, Key_U, Key_I, Key_O, Key_P, Key_Backslash,
                             Key_H, Key_J, Key_K, Key_L, Key_Semicolon, Key_Quote,
                             Key_RightParen, Key_N, Key_M, Key_Comma, Key_Period, Key_Slash, Key_RightShift,
-                            Key_Enter, Key_Spacebar, Key_Spacebar, Key_RightAlt,
+                            Key_Enter, Key_Spacebar, Key_RightGui, Key_RightAlt,
                             ShiftToLayer(FUNCTION)),
 
   [GAMING_ALT] = KEYMAP_STACKED(Key_7, Key_8, Key_9, Key_0, Key_Minus, Key_Equals, Key_Backspace,
