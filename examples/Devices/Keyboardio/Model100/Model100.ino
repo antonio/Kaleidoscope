@@ -323,8 +323,8 @@ KEYMAPS(
 
   [MOUSE] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, Key_mouseBtnR,
-   ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, Key_mouseUp, ___, ___, Key_mouseBtnR,
+   ___, ___, Key_mouseL, Key_mouseDn, Key_mouseR, ___,
    ___, ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___,
    ___,
@@ -333,7 +333,7 @@ KEYMAPS(
    Key_mouseBtnL, ___, ___, ___, ___, ___, ___,
    Key_mouseL, Key_mouseDn, Key_mouseUp, Key_mouseR, ___, ___,
    ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___,
+   Key_mouseBtnL, Key_mouseBtnR, ___, ___,
    ___),
 
   [GAMING] = KEYMAP_STACKED(Key_Backtick, Key_1, Key_2, Key_3, Key_4, Key_5, Key_6,
