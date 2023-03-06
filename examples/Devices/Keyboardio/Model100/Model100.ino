@@ -330,8 +330,8 @@ KEYMAPS(
    ___,
 
    ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, Key_mouseUp, ___, ___, ___,
-   ___, Key_mouseL, Key_mouseDn, Key_mouseR, ___, ___,
+   ___, ___, ___, ___, ___, ___, ___,
+   Key_mouseL, Key_mouseDn, Key_mouseUp, Key_mouseR, ___, ___,
    ___, ___, ___, ___, ___, ___, ___,
    Key_mouseBtnL, ___, ___, Key_mouseBtnR,
    ___),
@@ -751,6 +751,11 @@ void setup() {
     kaleidoscope::plugin::Qukey(GAMING, KeyAddr(2, 15), Key_RightControl),   // Quote/Ctrl
     kaleidoscope::plugin::Qukey(GAMING, KeyAddr(2, 8), Key_Hyper),           // Space/Hyper
   );
+
+  // MouseKeys configuration
+  MouseKeys.setCursorBaseSpeed(60);
+  MouseKeys.setCursorInitSpeed(1);
+  MouseKeys.setCursorAccelDuration(1000);
 }
 
 /** loop is the second of the standard Arduino sketch functions.
